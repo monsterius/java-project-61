@@ -1,6 +1,14 @@
 plugins {
     id("java")
     application
+    id("org.sonarqube") version "6.2.0.5505"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "monsterius_java-project-61")
+        property("sonar.organization", "monsterius")
+    }
 }
 
 application {
