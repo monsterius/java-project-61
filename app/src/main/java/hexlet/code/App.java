@@ -1,8 +1,23 @@
 package hexlet.code;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Brain Games!");
-        Cli.welcome();
+        boolean isValidInput = false;
+        while (!isValidInput) {
+            System.out.println("Please enter the game number and press Enter.\n1 - Greet\n0 - Exit");
+            Scanner sc = new Scanner(System.in);
+            String game = sc.nextLine();
+            if (game.equals("1")) {
+                isValidInput = true;
+                System.out.println("Welcome to the Brain Games!");
+                Cli.welcome();
+            } else if (game.equals("0")) {
+                isValidInput = true;
+                System.out.println("Goodbye!");
+            } else {
+                System.out.println("Invalid input!");
+            }
+        }
     }
 }
