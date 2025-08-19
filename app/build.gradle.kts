@@ -36,3 +36,8 @@ tasks.test {
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "hexlet.code.App"
+    }
+}
