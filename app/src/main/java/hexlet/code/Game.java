@@ -18,17 +18,17 @@ public class Game {
             String answer = scanner.nextLine();
             // Проверки на правильность ответа.
             if (number % 2 != 0 && answer.equals("yes")) {
-                System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, " + name);
-            } else if (number % 2 != 0 && answer.equals("no")) {
-                System.out.println("Correct!");
-                counter++;
-            } else if (number % 2 == 0 && answer.equals("yes")) {
-                System.out.println("Correct!");
-                counter++;
+                System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, " + name);
+                break;
             } else if (number % 2 == 0 && answer.equals("no")) {
-                System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, " + name);
+                System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, " + name);
+                break;
+            } else if ((number % 2 == 0 && answer.equals("yes")) || (number % 2 != 0 && answer.equals("no"))) {
+                System.out.println("Correct!");
+                counter++;
             } else {
                 System.out.println("Incorrect input!");
+                break;
             }
             number = generator.nextInt(10) + 1;
         }
