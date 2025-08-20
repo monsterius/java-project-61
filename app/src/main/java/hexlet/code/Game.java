@@ -5,25 +5,23 @@ import java.util.Scanner;
 public class Game {
     // Игра в четное.
     public static void even() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("May I have your name?");
-        String name = scanner.nextLine();
-        System.out.println("Hello, " + name + "!");
-
+        Engine.dispGreet();
         Random generator = new Random();
         int number = generator.nextInt(15) + 1; // Случайное число с генератора, от 1 до 16.
         var counter = 0; // Счетчик правильных ответов.
         boolean lost = false;
+        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, ";
+        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, ";
 
         while (counter < 3 && !lost) {
             System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.\nQuestion: " + number);
-            String answer = scanner.nextLine();
+            String answer = Engine.scanner.nextLine();
             // Проверки на правильность ответа.
             if (number % 2 != 0 && answer.equals("yes")) {
-                System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, " + name);
+                System.out.println(wrongA + Engine.name);
                 lost = true;
             } else if (number % 2 == 0 && answer.equals("no")) {
-                System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, " + name);
+                System.out.println(wrongB + Engine.name);
                 lost = true;
             } else if ((number % 2 == 0 && answer.equals("yes")) || (number % 2 != 0 && answer.equals("no"))) {
                 System.out.println("Correct!");
@@ -35,7 +33,7 @@ public class Game {
             number = generator.nextInt(10) + 1;
         }
         if (counter == 3) {
-            System.out.println("Congratulations, " + name + "!");
+            System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
     public static void calculator() {
@@ -50,6 +48,8 @@ public class Game {
         int operationIndex = generator.nextInt(3) + 1;
         int counter = 0;
         boolean lost = false;
+        var wrongA = " is wrong answer ;(. Correct answer was ";
+        var wrongB = "\nLet's try again, ";
 
         while (counter < 3 && !lost) {
             switch (operationIndex) {
@@ -65,7 +65,7 @@ public class Game {
                             numberA = generator.nextInt(5) + 1;
                             numberB = generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(input + " is wrong answer ;(. Correct answer was " + (numberA * numberB) + "\nLet's try again, " + name);
+                            System.out.println(input + wrongA + (numberA * numberB) + wrongB + name);
                             lost = true;
                         }
                     } catch (NumberFormatException e) {
@@ -85,7 +85,7 @@ public class Game {
                             numberA = generator.nextInt(5) + 1;
                             numberB = generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(input + " is wrong answer ;(. Correct answer was " + (numberA * numberB) + "\nLet's try again, " + name);
+                            System.out.println(input + wrongA + (numberA * numberB) + wrongB + name);
                             lost = true;
                         }
                     }  catch (NumberFormatException e) {
@@ -105,7 +105,7 @@ public class Game {
                             numberA = generator.nextInt(5) + 1;
                             numberB = generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(input + " is wrong answer ;(. Correct answer was " + (numberA - numberB) + "\nLet's try again, " + name);
+                            System.out.println(input + wrongA + (numberA - numberB) + wrongB + name);
                             lost = true;
                         }
                     }  catch (NumberFormatException e) {
