@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class Engine {
     public static final Scanner scanner = new Scanner(System.in); // Сканер
-    public static String name = ""; // Имя пользователя
     public static int counter = 0; // Счетчик успешных решений
     public static boolean gameOver = false; // Индикатор победы/поражения
     public static Random generator = new Random(); // Генератор рандомных чисел
+    public static String name = ""; // Имя пользователя
     public static String input = ""; // Ввод
+    public static String error = "Invalid Input"; // Ошибка формата ввода
+    public static String correctInput = "Correct!"
 
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;
