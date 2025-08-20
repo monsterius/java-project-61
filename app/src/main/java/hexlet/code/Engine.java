@@ -1,11 +1,15 @@
 package hexlet.code;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static Scanner scanner = new Scanner(System.in);
-    public static String name = "";
-    public static int counter = 0;
-    public static void dispGreetAndInit(int variation) {
+    public static Scanner scanner = new Scanner(System.in); // Сканер
+    public static String name = ""; // Имя пользователя
+    public static int counter = 0; // Счетчик успешных решений
+    public static boolean gameOver = false; // Индикатор победы/поражения
+    public static Random generator = new Random(); // Генератор рандомных чисел
+
+    public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;
         switch (variation) {
             case 1 -> { // Even
