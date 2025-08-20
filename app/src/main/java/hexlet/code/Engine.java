@@ -8,8 +8,7 @@ public class Engine {
     public static int counter = 0; // Счетчик успешных решений
     public static boolean gameOver = false; // Индикатор победы/поражения
     public static Random generator = new Random(); // Генератор рандомных чисел
-    public static int result = 0;
-    public static String input = "";
+    public static String input = ""; // Ввод
 
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;
