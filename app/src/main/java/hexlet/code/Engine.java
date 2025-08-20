@@ -10,7 +10,7 @@ public class Engine {
     public static String name = ""; // Имя пользователя
     public static String input = ""; // Ввод
     public static String error = "Invalid Input"; // Ошибка формата ввода
-    public static String correctInput = "Correct!";
+    public static String correctInput = "Correct!"; // Удачная попытка
 
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;

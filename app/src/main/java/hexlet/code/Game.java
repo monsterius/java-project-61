@@ -19,7 +19,10 @@ public class Game {
             } else if (number % 2 == 0 && Engine.input.equals("no")) {
                 System.out.println(wrongB + Engine.name);
                 Engine.gameOver = true;
-            } else if ((number % 2 == 0 && Engine.input.equals("yes")) || (number % 2 != 0 && Engine.input.equals("no"))) {
+            } else if (number % 2 == 0 && Engine.input.equals("yes")) {
+                System.out.println(Engine.correctInput);
+                Engine.counter++;
+            } else if (number % 2 != 0 && Engine.input.equals("no")) {
                 System.out.println(Engine.correctInput);
                 Engine.counter++;
             } else {
@@ -38,8 +41,8 @@ public class Game {
         Integer numberA = Engine.generator.nextInt(5) + 1;
         Integer numberB = Engine.generator.nextInt(5) + 1;
         int operationIndex = Engine.generator.nextInt(3) + 1;
-        var wrongA = " is wrong answer ;(. Correct answer was ";
-        var wrongB = "\nLet's try again, ";
+        var wrongA = Engine.input + " is wrong answer ;(. Correct answer was ";
+        var wrongB = "\nLet's try again, " + Engine.name;
 
         while (Engine.counter < 3 && !Engine.gameOver) {
             switch (operationIndex) {
@@ -55,7 +58,7 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(Engine.input + wrongA + (numberA * numberB) + wrongB + Engine.name);
+                            System.out.println(wrongA + (numberA + numberB) + wrongB);
                             Engine.gameOver = true;
                         }
                     } catch (NumberFormatException e) {
@@ -75,7 +78,7 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(Engine.input + wrongA + (numberA * numberB) + wrongB + Engine.name);
+                            System.out.println(wrongA + (numberA * numberB) + wrongB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
@@ -95,7 +98,7 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(Engine.input + wrongA + (numberA - numberB) + wrongB + Engine.name);
+                            System.out.println(wrongA + (numberA - numberB) + wrongB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
