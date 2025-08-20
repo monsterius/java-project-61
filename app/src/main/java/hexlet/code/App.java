@@ -18,8 +18,14 @@ public class App {
                     goodbye = true;
                     System.out.println("Goodbye!");
                 }
-                case "2" -> Game.even();
-                case "3" -> Game.calculator();
+                case "2" ->  {
+                    Game.even();
+                    Engine.gameOver = false;
+                }
+                case "3" -> {
+                    Game.calculator();
+                    Engine.gameOver = false;
+                }
                 default -> System.out.println("Invalid input!");
             }
         }
