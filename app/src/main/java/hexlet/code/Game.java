@@ -41,7 +41,7 @@ public class Game {
         Integer numberA = Engine.generator.nextInt(5) + 1;
         Integer numberB = Engine.generator.nextInt(5) + 1;
         int operationIndex = Engine.generator.nextInt(3) + 1;
-        var wrongA = Engine.input + " is wrong answer ;(. Correct answer was ";
+        var wrongA = " is wrong answer ;(. Correct answer was ";
         var wrongB = "\nLet's try again, " + Engine.name;
 
         while (Engine.counter < 3 && !Engine.gameOver) {
@@ -58,7 +58,8 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(wrongA + (numberA + numberB) + wrongB);
+                            var result = Engine.encloseInt(numberA + numberB);
+                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
                     } catch (NumberFormatException e) {
@@ -78,7 +79,8 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(wrongA + (numberA * numberB) + wrongB);
+                            var result = Engine.encloseInt(numberA * numberB);
+                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
@@ -98,7 +100,8 @@ public class Game {
                             numberA = Engine.generator.nextInt(5) + 1;
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
-                            System.out.println(wrongA + (numberA - numberB) + wrongB);
+                            var result = Engine.encloseInt(numberA - numberB);
+                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
