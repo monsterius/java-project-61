@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
+    // Общие переменные
     public static final Scanner scanner = new Scanner(System.in); // Сканер
     public static int counter = 0; // Счетчик успешных решений
     public static boolean gameOver = false; // Индикатор победы/поражения
@@ -11,7 +12,7 @@ public class Engine {
     public static String input = ""; // Ввод
     public static String error = "Invalid Input"; // Ошибка формата ввода
     public static String correctInput = "Correct!"; // Удачная попытка
-
+    // Метод приветствия и запроса имени
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;
         switch (variation) {
@@ -26,5 +27,12 @@ public class Engine {
                 System.out.println("Hello, " + name + "!\nWhat is the result of the expression?");
             }
         }
+    }
+    // Методы возврата инпута String или int в требуемом формате
+    public static String encloseStr(String input) {
+        return "'" + input + "'";
+    }
+    public static String encloseInt(int input) {
+        return "'" + input + "'";
     }
 }
