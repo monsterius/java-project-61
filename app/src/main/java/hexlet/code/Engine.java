@@ -29,10 +29,10 @@ public class Engine {
         }
     }
     // Методы возврата инпута String или int в требуемом формате
-    public static String encloseStr(String input) {
-        return "'" + input + "'";
+    public static String encloseStr(String str) {
+        return "'" + str + "'";
     }
-    public static String encloseInt(int input) {
-        return "'" + input + "'";
+    public static String encloseInt(int integer) {
+        return "'" + integer + "'";
     }
 }
