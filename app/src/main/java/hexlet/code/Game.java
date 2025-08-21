@@ -43,7 +43,7 @@ public class Game {
         int operationIndex = Engine.generator.nextInt(3) + 1;
         var wrongA = " is wrong answer ;(. Correct answer was ";
         var wrongB = "\nLet's try again, " + Engine.name;
-
+        var wrong = "Your answer: ";
         while (Engine.counter < 3 && !Engine.gameOver) {
             switch (operationIndex) {
                 case 1 -> { // sum
@@ -59,6 +59,7 @@ public class Game {
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
                             var result = Engine.encloseInt(numberA + numberB);
+                            System.out.println(wrong + Engine.input);
                             System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
@@ -80,6 +81,7 @@ public class Game {
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
                             var result = Engine.encloseInt(numberA * numberB);
+                            System.out.println(wrong + Engine.input);
                             System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
@@ -101,6 +103,7 @@ public class Game {
                             numberB = Engine.generator.nextInt(5) + 1;
                         } else {
                             var result = Engine.encloseInt(numberA - numberB);
+                            System.out.println(wrong + Engine.input);
                             System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
                             Engine.gameOver = true;
                         }
