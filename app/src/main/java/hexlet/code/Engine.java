@@ -26,6 +26,11 @@ public class Engine {
                 name = scanner.nextLine();
                 System.out.println("Hello, " + name + "!\nWhat is the result of the expression?");
             }
+            case 3 -> {
+                System.out.println("May I have your name?");
+                name = scanner.nextLine();
+                System.out.println("Hello, " + name + "!\nFind the greatest common divisor of given numbers.");
+            }
         }
     }
     // Методы возврата инпута String или int в требуемом формате

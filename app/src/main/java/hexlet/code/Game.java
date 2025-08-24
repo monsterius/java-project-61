@@ -35,6 +35,7 @@ public class Game {
             System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
+    // Игра Калькулятор.
     public static void calculator() {
         Engine.dispGreetAndInit(2);
 
@@ -117,5 +118,8 @@ public class Game {
         if (!Engine.gameOver) {
             System.out.println("Congratulations, " + Engine.name + "!");
         }
+    }
+    // Игра НОД.
+    public static void greatestCommonDivisor() {
     }
 }
