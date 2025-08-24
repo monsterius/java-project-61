@@ -161,4 +161,13 @@ public class Game {
             System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
+    // Игра Прогрессия.
+    public static void progression() {
+        Engine.dispGreetAndInit(3);
+
+        while (Engine.counter < 3 && !Engine.gameOver) {
+            String[] array = Engine.generateList();
+            System.out.println("Question: " );
+        }
+    }
 }
