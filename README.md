@@ -7,3 +7,6 @@
 "Calculator" game:
 ![calc-1.png](images/calc-1.png)
 ![calc-2.png](images/calc-2.png)
+"GCD" game: 
+![GCD-1.png](images/GCD-1.png)
+![GCD-2.png](images/GCD-2.png)
