@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import java.util.Arrays;
+
 public class Game {
     // Игра в четное.
     public static void even() {
@@ -128,7 +130,7 @@ public class Game {
         var wrongA = " is wrong answer ;(. Correct answer was ";
         var wrongB = "\nLet's try again, " + Engine.name;
         int tempVar = numberB;
-        Integer gCD = null;
+        Integer gCD;
         while (Engine.counter < 3 && !Engine.gameOver) {
             System.out.println("Question: " + numberA + " " + numberB);
             Engine.input = Engine.scanner.nextLine();
@@ -165,9 +167,34 @@ public class Game {
     public static void progression() {
         Engine.dispGreetAndInit(3);
 
+        String lostNumber;
+        var index = Engine.generator.nextInt(8) + 1;
+        var wrongA = " is wrong answer ;(. Correct answer was ";
+        var wrongB = "\nLet's try again, " + Engine.name;
         while (Engine.counter < 3 && !Engine.gameOver) {
             String[] array = Engine.generateList();
-            System.out.println("Question: " );
+            lostNumber = array[index];
+            array[index] = "..";
+            System.out.println("Question: " + Arrays.toString(array));
+            Engine.input = Engine.scanner.nextLine();
+            try  {
+                Integer.parseInt(Engine.input);
+            } catch (NumberFormatException e) {
+                System.out.println(Engine.error);
+                Engine.gameOver = true;
+                break;
+            }
+            if (Engine.input.equals(lostNumber)) {
+                System.out.println(Engine.correctInput);
+                Engine.counter++;
+            } else if (!Engine.input.equals(lostNumber)) {
+                var result = Engine.encloseStr(lostNumber);
+                System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                Engine.gameOver = true;
+            }
+        }
+        if (!Engine.gameOver) {
+            System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
 }

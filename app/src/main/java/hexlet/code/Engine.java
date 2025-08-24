@@ -47,7 +47,7 @@ public class Engine {
     }
     // Генератор числовой последовательности
     public static String[] generateList() {
-        String [] list = new String[9];
+        String[] list = new String[9];
         var firstNumber = generator.nextInt(15);
         var step = generator.nextInt(6) + 1;
         list[0] = firstNumber + "";
@@ -56,5 +56,4 @@ public class Engine {
         }
         return list;
     }
-
 }
