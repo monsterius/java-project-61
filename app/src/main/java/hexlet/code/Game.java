@@ -121,5 +121,44 @@ public class Game {
     }
     // Игра НОД.
     public static void greatestCommonDivisor() {
+        Engine.dispGreetAndInit(3);
+
+        var numberA = Engine.generator.nextInt(99) + 1;
+        var numberB = Engine.generator.nextInt(99) + 1;
+        var wrongA = " is wrong answer ;(. Correct answer was ";
+        var wrongB = "\nLet's try again, " + Engine.name;
+        int tempVar = numberB;
+        Integer gCD = null;
+        while (Engine.counter < 3 && !Engine.gameOver) {
+            System.out.println("Question: " + numberA + " " + numberB);
+            Engine.input = Engine.scanner.nextLine();
+            try {
+                Integer.parseInt(Engine.input);
+            } catch (NumberFormatException e) {
+                System.out.println(Engine.error);
+                Engine.gameOver = true;
+                break;
+            }
+            while (numberB != 0) { // Определение НОД
+                tempVar = numberA % numberB;
+                numberA = numberB;
+                numberB = tempVar;
+            }
+            gCD = numberA;
+
+            if (Engine.input.equals(gCD.toString())) {
+                System.out.println(Engine.correctInput);
+                Engine.counter++;
+                numberA = Engine.generator.nextInt(99) + 1;
+                numberB = Engine.generator.nextInt(99) + 1;
+            } else if (!Engine.input.equals(gCD.toString())) {
+                var result = Engine.encloseInt(gCD);
+                System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                Engine.gameOver = true;
+            }
+        }
+        if (!Engine.gameOver) {
+            System.out.println("Congratulations, " + Engine.name + "!");
+        }
     }
 }
