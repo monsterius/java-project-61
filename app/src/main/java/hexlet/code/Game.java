@@ -200,5 +200,34 @@ public class Game {
     }
     public static void prime() {
         Engine.dispGreetAndInit(5);
+
+        var number = Engine.generator.nextInt(120) + 1;
+        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, ";
+        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, ";
+        while (Engine.counter < 3 && !Engine.gameOver) {
+            System.out.println("Question: " + number);
+            Engine.input = Engine.scanner.nextLine();
+            if (Engine.input.equals("yes") && Engine.isPrime(number)) {
+                System.out.println(Engine.correctInput);
+                Engine.counter++;
+                number = Engine.generator.nextInt(499) + 1;
+            } else if (Engine.input.equals("no") && !Engine.isPrime(number)) {
+                System.out.println(Engine.correctInput);
+                Engine.counter++;
+                number = Engine.generator.nextInt(499) + 1;
+            } else if (Engine.input.equals("no") && Engine.isPrime(number)) {
+                System.out.println(wrongB);
+                Engine.gameOver = true;
+            } else if (Engine.input.equals("yes") && !Engine.isPrime(number)) {
+                System.out.println(wrongA);
+                Engine.gameOver = true;
+            } else {
+                System.out.println(Engine.error);
+                Engine.gameOver = true;
+            }
+        }
+        if (!Engine.gameOver) {
+            System.out.println("Congratulations, " + Engine.name + "!");
+        }
     }
 }
