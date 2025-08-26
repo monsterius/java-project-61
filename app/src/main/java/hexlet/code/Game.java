@@ -216,10 +216,10 @@ public class Game {
                 Engine.counter++;
                 number = Engine.generator.nextInt(499) + 1;
             } else if (Engine.input.equals("no") && Engine.isPrime(number)) {
-                System.out.println(wrongB);
+                System.out.println(wrongB + Engine.name);
                 Engine.gameOver = true;
             } else if (Engine.input.equals("yes") && !Engine.isPrime(number)) {
-                System.out.println(wrongA);
+                System.out.println(wrongA + Engine.name);
                 Engine.gameOver = true;
             } else {
                 System.out.println(Engine.error);
