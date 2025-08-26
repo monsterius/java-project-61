@@ -115,6 +115,7 @@ public class Game {
                         Engine.gameOver = true;
                     }
                 }
+                default -> System.out.println(Engine.error);
             }
         }
         if (!Engine.gameOver) {
@@ -225,9 +226,6 @@ public class Game {
                 System.out.println(Engine.error);
                 Engine.gameOver = true;
             }
-        }
-        if (!Engine.gameOver) {
-            System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
 }

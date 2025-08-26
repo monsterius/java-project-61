@@ -38,7 +38,7 @@ public class App {
                     Game.prime();
                     Engine.gameOver = false;
                 }
-                default -> System.out.println("Invalid input!");
+                default -> System.out.println(Engine.error);
             }
         }
     }

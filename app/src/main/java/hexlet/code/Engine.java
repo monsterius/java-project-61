@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Engine {
     // Общие переменные
-    public static final Scanner scanner = new Scanner(System.in); // Сканер
+    public static Scanner scanner = new Scanner(System.in); // Сканер
     public static int counter = 0; // Счетчик успешных решений
     public static boolean gameOver = false; // Индикатор победы/поражения
     public static Random generator = new Random(); // Генератор рандомных чисел
     public static String name = ""; // Имя пользователя
     public static String input = ""; // Ввод
-    public static String error = "Invalid Input"; // Ошибка формата ввода
+    public static String error = "Error"; // Ошибка формата ввода
     public static String correctInput = "Correct!"; // Удачная попытка
     // Метод приветствия и запроса имени
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
@@ -42,6 +42,7 @@ public class Engine {
                 System.out.println("Hello, " + name + "!");
                 System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
             }
+            default -> System.out.println(error);
         }
     }
     // Методы возврата инпута String или int в требуемом формате
