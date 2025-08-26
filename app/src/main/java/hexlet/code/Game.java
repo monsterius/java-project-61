@@ -175,7 +175,8 @@ public class Game {
             String[] array = Engine.generateList();
             lostNumber = array[index];
             array[index] = "..";
-            System.out.println("Question: " + Arrays.toString(array));
+            var formatedProg = Arrays.toString(array).replace("[", "").replace("]", "").replace(",", "");
+            System.out.println("Question: " + formatedProg);
             Engine.input = Engine.scanner.nextLine();
             try  {
                 Integer.parseInt(Engine.input);
