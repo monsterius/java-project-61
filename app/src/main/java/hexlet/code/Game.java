@@ -198,4 +198,7 @@ public class Game {
             System.out.println("Congratulations, " + Engine.name + "!");
         }
     }
+    public static void prime() {
+        Engine.dispGreetAndInit(5);
+    }
 }

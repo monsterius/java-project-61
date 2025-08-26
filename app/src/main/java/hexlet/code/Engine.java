@@ -36,6 +36,12 @@ public class Engine {
                 name = scanner.nextLine();
                 System.out.println("Hello, " + name + "!\nWhat number is missing in the progression?");
             }
+            case 5 -> {
+                System.out.println("May I have your name?");
+                name = scanner.nextLine();
+                System.out.println("Hello, " + name + "!");
+                System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+            }
         }
     }
     // Методы возврата инпута String или int в требуемом формате

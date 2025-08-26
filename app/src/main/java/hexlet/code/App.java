@@ -6,7 +6,7 @@ public class App {
         boolean goodbye = false;
         while (!goodbye) {
             System.out.println("Please enter the game number and press Enter.");
-            System.out.println("5 - Progression\n4 - GCD\n3 - Calculator\n2 - Even\n1 - Greet\n0 - Exit");
+            System.out.println("6 - Prime\n5 - Progression\n4 - GCD\n3 - Calculator\n2 - Even\n1 - Greet\n0 - Exit");
             Scanner sc = new Scanner(System.in);
             String game = sc.nextLine();
             switch (game) {
@@ -32,6 +32,10 @@ public class App {
                 }
                 case "5" -> {
                     Game.progression();
+                    Engine.gameOver = false;
+                }
+                case "6" -> {
+                    Game.prime();
                     Engine.gameOver = false;
                 }
                 default -> System.out.println("Invalid input!");
