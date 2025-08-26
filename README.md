@@ -10,3 +10,6 @@
 "GCD" game: 
 ![GCD-1.png](images/GCD-1.png)
 ![GCD-2.png](images/GCD-2.png)
+"Progression" game:
+![prog-1.png](images/prog-1.png)
+![prog-2.png](images/prog-2.png)
