@@ -165,7 +165,7 @@ public class Game {
     }
     // Игра Прогрессия.
     public static void progression() {
-        Engine.dispGreetAndInit(3);
+        Engine.dispGreetAndInit(4);
 
         String lostNumber;
         var index = Engine.generator.nextInt(8) + 1;
