@@ -8,8 +8,8 @@ public class Game {
         Engine.dispGreetAndInit(1);
 
         int number = Engine.generator.nextInt(15) + 1; // Случайное число с генератора, от 1 до 16.
-        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, ";
-        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, ";
+        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";
+        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ";
 
         while (Engine.counter < 3 && !Engine.gameOver) {
             System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.\nQuestion: " + number);
@@ -203,8 +203,8 @@ public class Game {
         Engine.dispGreetAndInit(5);
 
         var number = Engine.generator.nextInt(120) + 1;
-        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nYou have failed, ";
-        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nYou have failed, ";
+        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";
+        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ";
         while (Engine.counter < 3 && !Engine.gameOver) {
             System.out.println("Question: " + number);
             Engine.input = Engine.scanner.nextLine();
