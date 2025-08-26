@@ -13,3 +13,6 @@
 "Progression" game:
 ![prog-1.png](images/prog-1.png)
 ![prog-2.png](images/prog-2.png)
+"Prime" game:
+![prime-1.png](images/prime-1.png)
+![prime-2.png](images/prime-2.png)
