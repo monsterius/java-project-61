@@ -13,6 +13,7 @@ public class App {
                 case "1" -> {
                     System.out.println("Welcome to the Brain Games!");
                     Cli.welcome();
+                    goodbye = true;
                 }
                 case "0" -> {
                     goodbye = true;
@@ -20,25 +21,25 @@ public class App {
                 }
                 case "2" ->  {
                     Game.even();
-                    Engine.gameOver = false;
+                    goodbye = true;
                 }
                 case "3" -> {
                     Game.calculator();
-                    Engine.gameOver = false;
+                    goodbye = true;
                 }
                 case "4" -> {
                     Game.greatestCommonDivisor();
-                    Engine.gameOver = false;
+                    goodbye = true;
                 }
                 case "5" -> {
                     Game.progression();
-                    Engine.gameOver = false;
+                    goodbye = true;
                 }
                 case "6" -> {
                     Game.prime();
-                    Engine.gameOver = false;
+                    goodbye = true;
                 }
-                default -> System.out.println(Engine.error);
+                default -> goodbye = true;
             }
         }
     }
