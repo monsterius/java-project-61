@@ -12,34 +12,38 @@ public class Engine {
     public static String input = ""; // Ввод
     public static String error = "Error"; // Ошибка формата ввода
     public static String correctInput = "Correct!"; // Удачная попытка
+    public static String errA = " is wrong answer ;(. Correct answer was ";
+    public static String errB = "\nLet's try again, ";
     // Метод приветствия и запроса имени
     public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
         counter = 0;
+        var nameReq = "May I have your name?";
+        var greet = "Hello, ";
         switch (variation) {
             case 1 -> { // Even
-                System.out.println("May I have your name?");
+                System.out.println(nameReq);
                 name = scanner.nextLine();
-                System.out.println("Hello, " + name + "!");
+                System.out.println(greet + name + "!");
             }
             case 2 -> { // Calculator
-                System.out.println("May I have your name?");
+                System.out.println(nameReq);
                 name = scanner.nextLine();
-                System.out.println("Hello, " + name + "!\nWhat is the result of the expression?");
+                System.out.println(greet + name + "!\nWhat is the result of the expression?");
             }
             case 3 -> { // GCD
-                System.out.println("May I have your name?");
+                System.out.println(nameReq);
                 name = scanner.nextLine();
-                System.out.println("Hello, " + name + "!\nFind the greatest common divisor of given numbers.");
+                System.out.println(greet + name + "!\nFind the greatest common divisor of given numbers.");
             }
             case 4 -> { // Progression
-                System.out.println("May I have your name?");
+                System.out.println(nameReq);
                 name = scanner.nextLine();
-                System.out.println("Hello, " + name + "!\nWhat number is missing in the progression?");
+                System.out.println(greet + name + "!\nWhat number is missing in the progression?");
             }
             case 5 -> {
-                System.out.println("May I have your name?");
+                System.out.println(nameReq);
                 name = scanner.nextLine();
-                System.out.println("Hello, " + name + "!");
+                System.out.println(greet + name + "!");
                 System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
             }
             default -> System.out.println(error);

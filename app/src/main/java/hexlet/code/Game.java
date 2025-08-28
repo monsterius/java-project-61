@@ -44,8 +44,7 @@ public class Game {
         Integer numberA = Engine.generator.nextInt(5) + 1;
         Integer numberB = Engine.generator.nextInt(5) + 1;
         int operationIndex = Engine.generator.nextInt(3) + 1;
-        var wrongA = " is wrong answer ;(. Correct answer was ";
-        var wrongB = "\nLet's try again, " + Engine.name;
+        Engine.errB = Engine.errB + Engine.name;
         var wrong = "Your answer: ";
         while (Engine.counter < 3 && !Engine.gameOver) {
             switch (operationIndex) {
@@ -63,7 +62,7 @@ public class Game {
                         } else {
                             var result = Engine.encloseInt(numberA + numberB);
                             System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
                             Engine.gameOver = true;
                         }
                     } catch (NumberFormatException e) {
@@ -85,7 +84,7 @@ public class Game {
                         } else {
                             var result = Engine.encloseInt(numberA * numberB);
                             System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
@@ -107,7 +106,7 @@ public class Game {
                         } else {
                             var result = Engine.encloseInt(numberA - numberB);
                             System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
                             Engine.gameOver = true;
                         }
                     }  catch (NumberFormatException e) {
@@ -128,8 +127,7 @@ public class Game {
 
         var numberA = Engine.generator.nextInt(99) + 1;
         var numberB = Engine.generator.nextInt(99) + 1;
-        var wrongA = " is wrong answer ;(. Correct answer was ";
-        var wrongB = "\nLet's try again, " + Engine.name;
+        Engine.errB = Engine.errB + Engine.name;
         int tempVar = numberB;
         Integer gCD;
         while (Engine.counter < 3 && !Engine.gameOver) {
@@ -156,7 +154,7 @@ public class Game {
                 numberB = Engine.generator.nextInt(99) + 1;
             } else if (!Engine.input.equals(gCD.toString())) {
                 var result = Engine.encloseInt(gCD);
-                System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
                 Engine.gameOver = true;
             }
         }
@@ -170,8 +168,7 @@ public class Game {
 
         String lostNumber;
         var index = Engine.generator.nextInt(8) + 1;
-        var wrongA = " is wrong answer ;(. Correct answer was ";
-        var wrongB = "\nLet's try again, " + Engine.name;
+        Engine.errB = Engine.errB + Engine.name;
         while (Engine.counter < 3 && !Engine.gameOver) {
             String[] array = Engine.generateList();
             lostNumber = array[index];
@@ -191,7 +188,7 @@ public class Game {
                 Engine.counter++;
             } else if (!Engine.input.equals(lostNumber)) {
                 var result = Engine.encloseStr(lostNumber);
-                System.out.println(Engine.encloseStr(Engine.input) + wrongA + result + wrongB);
+                System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
                 Engine.gameOver = true;
             }
         }
