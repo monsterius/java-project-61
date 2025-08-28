@@ -20,6 +20,7 @@ public class App {
                 }
                 case "2" ->  {
                     Game.even();
+                    goodbye = true;
                 }
                 default -> System.out.println("Error");
             }
