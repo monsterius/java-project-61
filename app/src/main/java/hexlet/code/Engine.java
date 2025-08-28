@@ -40,14 +40,8 @@ public class Engine {
     public static void printCongratMsg() {
         System.out.println("Congratulations, " + name + "!");
     }
-    // Метод вывода в случае ошибки
-    public static void wrongAnswer(String answer, String result) {
-    }
-    // Методы возврата инпута String или int в требуемом формате
+    // Методы возврата инпута String в нужном формате
     public static String encloseStr(String str) {
         return "'" + str + "'";
-    }
-    public static String encloseInt(int integer) {
-        return "'" + integer + "'";
     }
 }

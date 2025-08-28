@@ -47,7 +47,7 @@ public class Game {
             switch (action) {
                 case "+" -> {
                     Engine.gameData[i][0] = randomValue1 + " " + action + " " + randomValue2;
-                    ;
+
                     result = randomValue1 + randomValue2;
                     Engine.gameData[i][1] = "" + result;
                 }
