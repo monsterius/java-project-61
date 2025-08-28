@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import java.util.Arrays;
+
 public class Game {
     // Игра в четное.
     public static void even() {
@@ -100,6 +102,34 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Find the greatest common divisor of given numbers.");
+        while (!Engine.gameOver && Engine.counter < 3) {
+            Engine.questionIs();
+            var userAnswer = Engine.scanner.nextLine();
+            Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
+        }
+        if (!Engine.gameOver) {
+            Engine.printCongratMsg();
+        }
+    }
+    public static void progression() {
+        Engine.counter = 0;
+        // Передача данных в движок
+        for (int i = 0; i < 3; i++) {
+            String[] list = new String[9];
+            var lostNumber = Engine.generator.nextInt(list.length);
+            var firstNumber = Engine.generator.nextInt(15);
+            var step = Engine.generator.nextInt(6) + 1;
+            list[0] = firstNumber + "";
+            for (int b = 1; b < list.length; b++) {
+                list[b] = Integer.parseInt(list[b - 1]) + step + "";
+            }
+            Engine.gameData[i][1] = list[lostNumber];
+            var stringArray = Arrays.toString(list).replace(list[lostNumber], "..");
+            stringArray = stringArray.replace("[", "").replace("]", "");
+            Engine.gameData[i][0] =  stringArray.replace(",", "");
+        }
+        // Начало игры
+        Engine.startGame("What number is missing in the progression?");
         while (!Engine.gameOver && Engine.counter < 3) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();

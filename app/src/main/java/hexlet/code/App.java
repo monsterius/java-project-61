@@ -30,6 +30,10 @@ public class App {
                     Game.gCD();
                     goodbye = true;
                 }
+                case "5" ->  {
+                    Game.progression();
+                    goodbye = true;
+                }
                 default -> System.out.println("Error");
             }
         }
