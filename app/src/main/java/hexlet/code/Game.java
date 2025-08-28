@@ -39,10 +39,12 @@ public class Game {
         int result;
         for (int i = 0; i < 3; i++) {
             randomAction = Engine.generator.nextInt(3) + 1;
-            switch (randomAction) {
-                case 1 -> action = "+";
-                case 2 -> action = "-";
-                case 3 -> action = "*";
+            if (randomAction == 1) {
+                action = "+";
+            } else if (randomAction == 2) {
+                action = "-";
+            } else if (randomAction == 3) {
+                action = "*";
             }
             switch (action) {
                 case "+" -> {
@@ -61,6 +63,7 @@ public class Game {
                     result = randomValue1 * randomValue2;
                     Engine.gameData[i][1] = "" + result;
                 }
+                default -> System.out.println("");
             }
             randomValue1 = Engine.generator.nextInt(25) + 1;
             randomValue2 = Engine.generator.nextInt(10) + 1;
