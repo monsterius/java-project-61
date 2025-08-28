@@ -21,18 +21,6 @@ public class App {
                 case "2" ->  {
                     Game.even();
                 }
-                case "3" -> {
-                    Game.calculator();
-                }
-                case "4" -> {
-                    Game.greatestCommonDivisor();
-                }
-                case "5" -> {
-                    Game.progression();
-                }
-                case "6" -> {
-                    Game.prime();
-                }
                 default -> System.out.println("Error");
             }
         }
