@@ -20,25 +20,20 @@ public class App {
                 }
                 case "2" ->  {
                     Game.even();
-                    Engine.gameOver = false;
                 }
                 case "3" -> {
                     Game.calculator();
-                    Engine.gameOver = false;
                 }
                 case "4" -> {
                     Game.greatestCommonDivisor();
-                    Engine.gameOver = false;
                 }
                 case "5" -> {
                     Game.progression();
-                    Engine.gameOver = false;
                 }
                 case "6" -> {
                     Game.prime();
-                    Engine.gameOver = false;
                 }
-                default -> System.out.println(Engine.error);
+                default -> System.out.println("Error");
             }
         }
     }
