@@ -30,14 +30,19 @@ public class Engine {
         System.out.println("Question: " + encloseStr(gameData[currentRound][0]));
     }
     // Метод сравнения результата с правильным ответом
-    public static boolean checkAnswer(String answer) {
-        return answer.equals(gameData[currentRound][1]);
+    public static void checkAnswer(String answer, String result) {
+        var partA = " is wrong answer ;(. Correct answer was ";
+        var partB =  "\nLet's try again, ";
+        if (answer.equals(gameData[currentRound][1])) {
+            System.out.println(correctInput);
+            counter++;
+            currentRound++;
+        } else {
+            System.out.println(encloseStr(answer) + partA + encloseStr(result) + partB + name + "!");
+        }
     }
     // Метод вывода в случае ошибки
     public static void wrongAnswer(String answer, String result) {
-        var partA = " is wrong answer ;(. Correct answer was ";
-        var partB =  "\nLet's try again, ";
-        System.out.println(answer + partA + result + partB + "!");
     }
     // Методы возврата инпута String или int в требуемом формате
     public static String encloseStr(String str) {
