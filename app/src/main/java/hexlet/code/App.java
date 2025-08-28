@@ -22,6 +22,10 @@ public class App {
                     Game.even();
                     goodbye = true;
                 }
+                case "3" ->  {
+                    Game.calculator();
+                    goodbye = true;
+                }
                 default -> System.out.println("Error");
             }
         }
