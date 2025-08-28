@@ -79,4 +79,34 @@ public class Game {
             Engine.printCongratMsg();
         }
     }
+    public static void gCD() {
+        Engine.counter = 0;
+        // Передача данных в движок
+        int numberA;
+        int numberB;
+        int tempVar;
+        int gCD;
+        for (int i = 0; i < 3; i++) {
+            numberA = Engine.generator.nextInt(40) + 1;
+            numberB = Engine.generator.nextInt(40) + 1;
+            Engine.gameData[i][0] = numberA + " " + numberB;
+            while (numberB != 0) {
+                tempVar = numberA % numberB;
+                numberA = numberB;
+                numberB = tempVar;
+            }
+            gCD = numberA;
+            Engine.gameData[i][1] = "" + gCD;
+        }
+        // Начало игры
+        Engine.startGame("Find the greatest common divisor of given numbers.");
+        while (!Engine.gameOver && Engine.counter < 3) {
+            Engine.questionIs();
+            var userAnswer = Engine.scanner.nextLine();
+            Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
+        }
+        if (!Engine.gameOver) {
+            Engine.printCongratMsg();
+        }
+    }
 }

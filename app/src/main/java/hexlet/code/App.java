@@ -26,6 +26,10 @@ public class App {
                     Game.calculator();
                     goodbye = true;
                 }
+                case "4" ->  {
+                    Game.gCD();
+                    goodbye = true;
+                }
                 default -> System.out.println("Error");
             }
         }
