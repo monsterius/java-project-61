@@ -25,6 +25,10 @@ public class Engine {
         name = scanner.nextLine();
         System.out.println(greet + name + "!\n" + question);
     }
+    // Метод вывода вопроса
+    public static void questionIs() {
+        System.out.println("Question: " + encloseStr(gameData[currentRound][0]));
+    }
     // Метод сравнения результата с правильным ответом
     public static boolean checkAnswer(String answer) {
         return answer.equals(gameData[currentRound][1]);
