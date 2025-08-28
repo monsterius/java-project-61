@@ -32,7 +32,7 @@ public class Engine {
             System.out.println(correctInput);
             counter++;
         } else {
-            System.out.println(encloseStr(answer) + partA + encloseStr(result) + partB + name + "!");
+            System.out.println(encloseStr(answer) + partA + encloseStr(result) + "." + partB + name + "!");
             gameOver = true;
         }
     }
