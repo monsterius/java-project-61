@@ -9,13 +9,7 @@ public class Engine {
     public static boolean gameOver = false; // Индикатор победы/поражения
     public static Random generator = new Random(); // Генератор рандомных чисел
     public static String name = ""; // Имя пользователя
-    public static String input = ""; // Ввод
-    public static String error = "Error"; // Ошибка формата ввода
-    public static String correctInput = "Correct!"; // Удачная попытка
-    public static String errA = " is wrong answer ;(. Correct answer was ";
-    public static String errB = "\nLet's try again, ";
-    public static String[][] gameData = new String[3][2];
-    public static int currentRound = 0;
+    public static String[][] gameData = new String[3][2]; // База
     // Метод приветствия и запроса имени
     public static void startGame(String question) { // Приветствие и ввод имени
         counter = 0;
@@ -27,19 +21,24 @@ public class Engine {
     }
     // Метод вывода вопроса
     public static void questionIs() {
-        System.out.println("Question: " + encloseStr(gameData[currentRound][0]));
+        System.out.println("Question: " + gameData[counter][0]);
     }
     // Метод сравнения результата с правильным ответом
     public static void checkAnswer(String answer, String result) {
         var partA = " is wrong answer ;(. Correct answer was ";
         var partB =  "\nLet's try again, ";
-        if (answer.equals(gameData[currentRound][1])) {
+        String correctInput = "Correct!";
+        if (answer.equals(gameData[counter][1])) {
             System.out.println(correctInput);
             counter++;
-            currentRound++;
         } else {
             System.out.println(encloseStr(answer) + partA + encloseStr(result) + partB + name + "!");
+            gameOver = true;
         }
+    }
+    // Вывод поздравления
+    public static void printCongratMsg() {
+        System.out.println("Congratulations, " + name + "!");
     }
     // Метод вывода в случае ошибки
     public static void wrongAnswer(String answer, String result) {
