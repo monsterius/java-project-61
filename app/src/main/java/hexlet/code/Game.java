@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Game {
     // Игра в четное.
     public static void even() {
-        Engine.dispGreetAndInit(1);
+        Engine.startGame(1);
 
         int number = Engine.generator.nextInt(15) + 1; // Случайное число с генератора, от 1 до 16.
         var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";
@@ -39,7 +39,7 @@ public class Game {
     }
     // Игра Калькулятор.
     public static void calculator() {
-        Engine.dispGreetAndInit(2);
+        Engine.startGame(2);
 
         Integer numberA = Engine.generator.nextInt(5) + 1;
         Integer numberB = Engine.generator.nextInt(5) + 1;
@@ -123,7 +123,7 @@ public class Game {
     }
     // Игра НОД.
     public static void greatestCommonDivisor() {
-        Engine.dispGreetAndInit(3);
+        Engine.startGame(3);
 
         var numberA = Engine.generator.nextInt(99) + 1;
         var numberB = Engine.generator.nextInt(99) + 1;
@@ -164,7 +164,7 @@ public class Game {
     }
     // Игра Прогрессия.
     public static void progression() {
-        Engine.dispGreetAndInit(4);
+        Engine.startGame(4);
 
         String lostNumber;
         var index = Engine.generator.nextInt(8) + 1;
@@ -197,7 +197,7 @@ public class Game {
         }
     }
     public static void prime() {
-        Engine.dispGreetAndInit(5);
+        Engine.startGame(5);
 
         var number = Engine.generator.nextInt(120) + 1;
         var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";

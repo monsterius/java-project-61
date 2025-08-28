@@ -15,7 +15,7 @@ public class Engine {
     public static String errA = " is wrong answer ;(. Correct answer was ";
     public static String errB = "\nLet's try again, ";
     // Метод приветствия и запроса имени
-    public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
+    public static void startGame(int variation) { // Приветствие и ввод имени
         counter = 0;
         var nameReq = "May I have your name?";
         var greet = "Hello, ";
