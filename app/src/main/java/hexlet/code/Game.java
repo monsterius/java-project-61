@@ -47,11 +47,11 @@ public class Game {
         int result;
         for (int i = 0; i < Engine.gameDataLength; i++) {
             randomAction = Engine.generator.nextInt(RANDOM_ACTION_INDEX) + 1;
-            if (randomAction == 1) {
+            if (randomAction == RANDOM_ACTION_INDEX - 2) {
                 action = "+";
-            } else if (randomAction == 2) {
+            } else if (randomAction == RANDOM_ACTION_INDEX - 1) {
                 action = "-";
-            } else if (randomAction == 3) {
+            } else if (randomAction == RANDOM_ACTION_INDEX) {
                 action = "*";
             }
             switch (action) {
