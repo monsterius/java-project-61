@@ -139,4 +139,30 @@ public class Game {
             Engine.printCongratMsg();
         }
     }
+    public static void prime() {
+        Engine.counter = 0;
+        // Передача данных в движок
+        int randomNumber;
+        for (int i = 0; i < 3; i++) {
+            randomNumber = Engine.generator.nextInt(50) + 1;
+            boolean numIsPrime = Misc.isPrime(randomNumber);
+            if (numIsPrime) {
+                Engine.gameData[i][0] = "" + randomNumber;
+                Engine.gameData[i][1] = "yes";
+            } else {
+                Engine.gameData[i][0] = "" + randomNumber;
+                Engine.gameData[i][1] = "no";
+            }
+        }
+        // Начало игры
+        Engine.startGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        while (!Engine.gameOver && Engine.counter < 3) {
+            Engine.questionIs();
+            var userAnswer = Engine.scanner.nextLine();
+            Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
+        }
+        if (!Engine.gameOver) {
+            Engine.printCongratMsg();
+        }
+    }
 }

@@ -34,6 +34,10 @@ public class App {
                     Game.progression();
                     goodbye = true;
                 }
+                case "6" ->  {
+                    Game.prime();
+                    goodbye = true;
+                }
                 default -> System.out.println("Error");
             }
         }
