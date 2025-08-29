@@ -3,9 +3,12 @@ package hexlet.code;
 import java.util.Arrays;
 
 public class Game {
-    private static final int ROUNDSTODO = 3;
+    private static final int ROUNDS_TODO = 3;
     private static final int RANDOMBOUNDBIG = 50;
     private static final int RANDOMBOUNDSMALL = 25;
+    private static final int RANDOM_ACTION_INDEX = 3;
+    private static final int STEP_BOUND = 6;
+    private static final int PROGRESSION_SIZE = 9;
     // Игра в четное.
     public static void even() {
         Engine.counter = 0;
@@ -24,7 +27,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
+        while (!Engine.gameOver && Engine.counter < ROUNDS_TODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -37,14 +40,13 @@ public class Game {
     public static void calculator() {
         Engine.counter = 0;
         // Передача данных в движок
-        var randomActionIndex = 3;
         var randomValue1 = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
         var randomValue2 = Engine.generator.nextInt(RANDOMBOUNDSMALL) + 1;
         int randomAction;
         var action = "";
         int result;
         for (int i = 0; i < Engine.gameDataLength; i++) {
-            randomAction = Engine.generator.nextInt(randomActionIndex) + 1;
+            randomAction = Engine.generator.nextInt(RANDOM_ACTION_INDEX) + 1;
             if (randomAction == 1) {
                 action = "+";
             } else if (randomAction == 2) {
@@ -76,7 +78,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("What is the result of the expression?");
-        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
+        while (!Engine.gameOver && Engine.counter < ROUNDS_TODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -106,7 +108,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Find the greatest common divisor of given numbers.");
-        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
+        while (!Engine.gameOver && Engine.counter < ROUNDS_TODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -118,12 +120,11 @@ public class Game {
     public static void progression() {
         Engine.counter = 0;
         // Передача данных в движок
-        var stepBound = 6;
         for (int i = 0; i < Engine.gameDataLength; i++) {
-            String[] list = new String[9];
+            String[] list = new String[PROGRESSION_SIZE];
             var lostNumber = Engine.generator.nextInt(list.length);
-            var firstNumber = Engine.generator.nextInt(15);
-            var step = Engine.generator.nextInt(stepBound) + 1;
+            var firstNumber = Engine.generator.nextInt(RANDOMBOUNDSMALL);
+            var step = Engine.generator.nextInt(STEP_BOUND) + 1;
             list[0] = firstNumber + "";
             for (int b = 1; b < list.length; b++) {
                 list[b] = Integer.parseInt(list[b - 1]) + step + "";
@@ -135,7 +136,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("What number is missing in the progression?");
-        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
+        while (!Engine.gameOver && Engine.counter < ROUNDS_TODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -161,7 +162,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
+        while (!Engine.gameOver && Engine.counter < ROUNDS_TODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
