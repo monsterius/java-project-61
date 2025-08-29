@@ -3,6 +3,9 @@ package hexlet.code;
 import java.util.Arrays;
 
 public class Game {
+    private static final int ROUNDSTODO = 3;
+    private static final int RANDOMBOUNDBIG = 50;
+    private static final int RANDOMBOUNDSMALL = 25;
     // Игра в четное.
     public static void even() {
         Engine.counter = 0;
@@ -10,8 +13,8 @@ public class Game {
         int randomValue;
         var even = "yes";
         var odd = "no";
-        for (int i = 0; i < 3; i++) {
-            randomValue = Engine.generator.nextInt(50) + 1;
+        for (int i = 0; i < Engine.gameDataLength; i++) {
+            randomValue = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
             Engine.gameData[i][0] = randomValue + "";
             if (randomValue % 2 == 0) {
                 Engine.gameData[i][1] = even;
@@ -21,7 +24,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (!Engine.gameOver && Engine.counter < 3) {
+        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -34,13 +37,14 @@ public class Game {
     public static void calculator() {
         Engine.counter = 0;
         // Передача данных в движок
-        var randomValue1 = Engine.generator.nextInt(25) + 1;
-        var randomValue2 = Engine.generator.nextInt(10) + 1;
+        var randomActionIndex = 3;
+        var randomValue1 = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
+        var randomValue2 = Engine.generator.nextInt(RANDOMBOUNDSMALL) + 1;
         int randomAction;
         var action = "";
         int result;
-        for (int i = 0; i < 3; i++) {
-            randomAction = Engine.generator.nextInt(3) + 1;
+        for (int i = 0; i < Engine.gameDataLength; i++) {
+            randomAction = Engine.generator.nextInt(randomActionIndex) + 1;
             if (randomAction == 1) {
                 action = "+";
             } else if (randomAction == 2) {
@@ -67,12 +71,12 @@ public class Game {
                 }
                 default -> System.out.println("");
             }
-            randomValue1 = Engine.generator.nextInt(25) + 1;
-            randomValue2 = Engine.generator.nextInt(10) + 1;
+            randomValue1 = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
+            randomValue2 = Engine.generator.nextInt(RANDOMBOUNDSMALL) + 1;
         }
         // Начало игры
         Engine.startGame("What is the result of the expression?");
-        while (!Engine.gameOver && Engine.counter < 3) {
+        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -88,9 +92,9 @@ public class Game {
         int numberB;
         int tempVar;
         int gCD;
-        for (int i = 0; i < 3; i++) {
-            numberA = Engine.generator.nextInt(40) + 1;
-            numberB = Engine.generator.nextInt(40) + 1;
+        for (int i = 0; i < Engine.gameDataLength; i++) {
+            numberA = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
+            numberB = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
             Engine.gameData[i][0] = numberA + " " + numberB;
             while (numberB != 0) {
                 tempVar = numberA % numberB;
@@ -102,7 +106,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Find the greatest common divisor of given numbers.");
-        while (!Engine.gameOver && Engine.counter < 3) {
+        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -114,11 +118,12 @@ public class Game {
     public static void progression() {
         Engine.counter = 0;
         // Передача данных в движок
-        for (int i = 0; i < 3; i++) {
+        var stepBound = 6;
+        for (int i = 0; i < Engine.gameDataLength; i++) {
             String[] list = new String[9];
             var lostNumber = Engine.generator.nextInt(list.length);
             var firstNumber = Engine.generator.nextInt(15);
-            var step = Engine.generator.nextInt(6) + 1;
+            var step = Engine.generator.nextInt(stepBound) + 1;
             list[0] = firstNumber + "";
             for (int b = 1; b < list.length; b++) {
                 list[b] = Integer.parseInt(list[b - 1]) + step + "";
@@ -130,7 +135,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("What number is missing in the progression?");
-        while (!Engine.gameOver && Engine.counter < 3) {
+        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);
@@ -143,8 +148,8 @@ public class Game {
         Engine.counter = 0;
         // Передача данных в движок
         int randomNumber;
-        for (int i = 0; i < 3; i++) {
-            randomNumber = Engine.generator.nextInt(50) + 1;
+        for (int i = 0; i < Engine.gameDataLength; i++) {
+            randomNumber = Engine.generator.nextInt(RANDOMBOUNDBIG) + 1;
             boolean numIsPrime = Misc.isPrime(randomNumber);
             if (numIsPrime) {
                 Engine.gameData[i][0] = "" + randomNumber;
@@ -156,7 +161,7 @@ public class Game {
         }
         // Начало игры
         Engine.startGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        while (!Engine.gameOver && Engine.counter < 3) {
+        while (!Engine.gameOver && Engine.counter < ROUNDSTODO) {
             Engine.questionIs();
             var userAnswer = Engine.scanner.nextLine();
             Engine.checkAnswer(userAnswer, Engine.gameData[Engine.counter][1]);

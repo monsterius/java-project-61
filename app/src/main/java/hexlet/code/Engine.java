@@ -10,6 +10,7 @@ public class Engine {
     public static Random generator = new Random(); // Генератор рандомных чисел
     public static String name = ""; // Имя пользователя
     public static String[][] gameData = new String[3][2]; // База
+    public static int gameDataLength = 3;
     // Метод приветствия и запроса имени
     public static void startGame(String question) { // Приветствие и ввод имени
         counter = 0;
