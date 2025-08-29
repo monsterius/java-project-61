@@ -13,6 +13,7 @@ public class App {
                 case "1" -> {
                     System.out.println("Welcome to the Brain Games!");
                     Cli.welcome();
+                    goodbye = true;
                 }
                 case "0" -> {
                     goodbye = true;
