@@ -2,6 +2,7 @@ package hexlet.code;
 
 public class Misc {
     public static boolean isPrime(int number) {
+        var indexValue = 3;
         if (number <= 1) {
             return false;
         } else if (number == 2) {
@@ -10,7 +11,7 @@ public class Misc {
             return false;
         }
         int sqrtN = (int) Math.sqrt(number);
-        for (int i = 3; i <= sqrtN; i += 2) {
+        for (int i = indexValue; i <= sqrtN; i += 2) {
             if (number % i == 0) {
                 return false;
             }

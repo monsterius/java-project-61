@@ -9,8 +9,8 @@ public class Engine {
     public static boolean gameOver = false; // Индикатор победы/поражения
     public static Random generator = new Random(); // Генератор рандомных чисел
     public static String name = ""; // Имя пользователя
-    public final static String[][] gameData = new String[3][2]; // База
     public final static int gameDataLength = 3;
+    public final static String[][] gameData = new String[gameDataLength][2]; // База
     // Метод приветствия и запроса имени
     public static void startGame(String question) { // Приветствие и ввод имени
         counter = 0;
