@@ -4,11 +4,9 @@ public class Misc {
     public static boolean isPrime(int number) {
         if (number <= 1) {
             return false;
-        }
-        else if (number == 2) {
+        } else if (number == 2) {
             return true;
-        }
-        else if (number % 2 == 0) {
+        } else if (number % 2 == 0) {
             return false;
         }
         int sqrtN = (int) Math.sqrt(number);
