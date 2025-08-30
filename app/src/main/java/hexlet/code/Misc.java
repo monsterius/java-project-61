@@ -1,8 +1,8 @@
 package hexlet.code;
 
 public class Misc {
+    private static  int indexValue = 3;
     public static boolean isPrime(int number) {
-        var indexValue = 3;
         if (number <= 1) {
             return false;
         } else if (number == 2) {

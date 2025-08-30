@@ -4,32 +4,31 @@ import java.util.Scanner;
 
 public class Engine {
     // Общие переменные
-    public static Scanner scanner = new Scanner(System.in); // Сканер
-    public static int counter = 0; // Счетчик успешных решений
-    public static boolean gameOver = false; // Индикатор победы/поражения
-    public static Random generator = new Random(); // Генератор рандомных чисел
-    public static String name = ""; // Имя пользователя
-    public final static int gameDataLength = 3;
-    public final static String[][] gameData = new String[gameDataLength][2]; // База
+    private static final Scanner SCANNER = new Scanner(System.in); // Сканер
+    private static int counter = 0; // Счетчик успешных решений
+    private static boolean gameOver = false; // Индикатор победы/поражения
+    public static final  Random RANDOM_NUM_GENERATOR = new Random(); // Генератор рандомных чисел
+    private static String name = ""; // Имя пользователя
+    public static final  String[][] GAME_DATA_BASE = new String[3][2]; // База
     // Метод приветствия и запроса имени
     public static void startGame(String question) { // Приветствие и ввод имени
         counter = 0;
         var nameReq = "May I have your name?";
         var greet = "Hello, ";
         System.out.println(nameReq);
-        name = scanner.nextLine();
+        name = SCANNER.nextLine();
         System.out.println(greet + name + "!\n" + question);
     }
     // Метод вывода вопроса
     public static void questionIs() {
-        System.out.println("Question: " + gameData[counter][0]);
+        System.out.println("Question: " + GAME_DATA_BASE[counter][0]);
     }
     // Метод сравнения результата с правильным ответом
     public static void checkAnswer(String answer, String result) {
         var partA = " is wrong answer ;(. Correct answer was ";
         var partB =  "\nLet's try again, ";
         String correctInput = "Correct!";
-        if (answer.equals(gameData[counter][1])) {
+        if (answer.equals(GAME_DATA_BASE[counter][1])) {
             System.out.println(correctInput);
             counter++;
         } else {
@@ -44,5 +43,21 @@ public class Engine {
     // Методы возврата инпута String в нужном формате
     public static String encloseStr(String str) {
         return "'" + str + "'";
+    }
+    public static String getUserInput() {
+        return Engine.SCANNER.nextLine();
+    }
+    public static int getCurrentGameStage() {
+        return counter;
+    }
+    public static boolean getGameOverStatus() {
+        return gameOver;
+    }
+    public static void setGameOverStatus(boolean status) {
+        if  (status) {
+            Engine.gameOver = true;
+        } else {
+            Engine.gameOver = false;
+        }
     }
 }
