@@ -1,5 +1,10 @@
 package hexlet.code;
 import java.util.Scanner;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 public class App {
     public static void main(String[] args) {
@@ -20,23 +25,23 @@ public class App {
                     System.out.println("Goodbye!");
                 }
                 case "2" ->  {
-                    Game.even();
+                    Even.evenGame();
                     goodbye = true;
                 }
                 case "3" ->  {
-                    Game.calculator();
+                    Calculator.calculatorGame();
                     goodbye = true;
                 }
                 case "4" ->  {
-                    Game.gCD();
+                    Gcd.gCDGame();
                     goodbye = true;
                 }
                 case "5" ->  {
-                    Game.progression();
+                    Progression.progressionGame();
                     goodbye = true;
                 }
                 case "6" ->  {
-                    Game.prime();
+                    Prime.primeGame();
                     goodbye = true;
                 }
                 default -> System.out.println("Error");
