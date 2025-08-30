@@ -126,9 +126,10 @@ public class Game {
                 list[b] = Integer.parseInt(list[b - 1]) + step + "";
             }
             Engine.GAME_DATA_BASE[i][1] = list[lostNumber];
-            var stringArray = Arrays.toString(list).replace(list[lostNumber], "..");
-            stringArray = stringArray.replace("[", "").replace("]", "");
-            Engine.GAME_DATA_BASE[i][0] =  stringArray.replace(",", "");
+            list[lostNumber] = "..";
+            var progression = Arrays.toString(list);
+            progression = progression.replace("[", "").replace("]", "");
+            Engine.GAME_DATA_BASE[i][0] =  progression.replace(",", "");
         }
         // Начало игры
         Engine.startGame("What number is missing in the progression?");
