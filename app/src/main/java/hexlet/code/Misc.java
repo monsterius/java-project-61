@@ -1,7 +1,7 @@
 package hexlet.code;
 
 public class Misc {
-    private final static int INDEX = 3;
+    private static final  int INDEX = 3;
     public static boolean isPrime(int number) {
         if (number <= 1) {
             return false;
