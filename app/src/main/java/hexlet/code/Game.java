@@ -3,226 +3,168 @@ package hexlet.code;
 import java.util.Arrays;
 
 public class Game {
+    private static final int ROUNDS_TODO = 3;
+    private static final int RANDOMBOUNDBIG = 50;
+    private static final int RANDOMBOUNDSMALL = 25;
+    private static final int RANDOM_ACTION_INDEX = 3;
+    private static final int STEP_BOUND = 6;
+    private static final int PROGRESSION_SIZE = 9;
     // Игра в четное.
     public static void even() {
-        Engine.dispGreetAndInit(1);
-
-        int number = Engine.generator.nextInt(15) + 1; // Случайное число с генератора, от 1 до 16.
-        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";
-        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ";
-
-        while (Engine.counter < 3 && !Engine.gameOver) {
-            System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.\nQuestion: " + number);
-            Engine.input = Engine.scanner.nextLine();
-            // Проверки на правильность ответа.
-            if (number % 2 != 0 && Engine.input.equals("yes")) {
-                System.out.println(wrongA + Engine.name);
-                Engine.gameOver = true;
-            } else if (number % 2 == 0 && Engine.input.equals("no")) {
-                System.out.println(wrongB + Engine.name);
-                Engine.gameOver = true;
-            } else if (number % 2 == 0 && Engine.input.equals("yes")) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
-            } else if (number % 2 != 0 && Engine.input.equals("no")) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
+        // Передача данных в движок
+        int randomValue;
+        var even = "yes";
+        var odd = "no";
+        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+            randomValue = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            Engine.GAME_DATA_BASE[i][0] = randomValue + "";
+            if (randomValue % 2 == 0) {
+                Engine.GAME_DATA_BASE[i][1] = even;
             } else {
-                System.out.println(Engine.error);
-                Engine.gameOver = true;
+                Engine.GAME_DATA_BASE[i][1] = odd;
             }
-            number = Engine.generator.nextInt(10) + 1;
         }
-        if (Engine.counter == 3) {
-            System.out.println("Congratulations, " + Engine.name + "!");
+        // Начало игры
+        Engine.startGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
+            Engine.questionIs();
+            var userInput = Engine.getUserInput();
+            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
+        }
+        if (!Engine.getGameOverStatus()) {
+            Engine.printCongratMsg();
         }
     }
-    // Игра Калькулятор.
+
     public static void calculator() {
-        Engine.dispGreetAndInit(2);
-
-        Integer numberA = Engine.generator.nextInt(5) + 1;
-        Integer numberB = Engine.generator.nextInt(5) + 1;
-        int operationIndex = Engine.generator.nextInt(3) + 1;
-        Engine.errB = Engine.errB + Engine.name;
-        var wrong = "Your answer: ";
-        while (Engine.counter < 3 && !Engine.gameOver) {
-            switch (operationIndex) {
-                case 1 -> { // sum
-                    System.out.println("Question: " + numberA + " + " + numberB);
-                    try {
-                        Engine.input = Engine.scanner.nextLine();
-                        int number = Integer.parseInt(Engine.input);
-                        if (number == numberA + numberB) {
-                            System.out.println(Engine.correctInput);
-                            Engine.counter++;
-                            operationIndex = Engine.generator.nextInt(3) + 1;
-                            numberA = Engine.generator.nextInt(5) + 1;
-                            numberB = Engine.generator.nextInt(5) + 1;
-                        } else {
-                            var result = Engine.encloseInt(numberA + numberB);
-                            System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
-                            Engine.gameOver = true;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println(Engine.error);
-                        Engine.gameOver = true;
-                    }
-                }
-                case 2 -> { // product
-                    System.out.println("Question: " + numberA + " * " + numberB);
-                    try {
-                        Engine.input = Engine.scanner.nextLine();
-                        int number = Integer.parseInt(Engine.input);
-                        if (number == numberA * numberB) {
-                            System.out.println(Engine.correctInput);
-                            Engine.counter++;
-                            operationIndex = Engine.generator.nextInt(3) + 1;
-                            numberA = Engine.generator.nextInt(5) + 1;
-                            numberB = Engine.generator.nextInt(5) + 1;
-                        } else {
-                            var result = Engine.encloseInt(numberA * numberB);
-                            System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
-                            Engine.gameOver = true;
-                        }
-                    }  catch (NumberFormatException e) {
-                        System.out.println(Engine.error);
-                        Engine.gameOver = true;
-                    }
-                }
-                case 3 -> { // substraction
-                    System.out.println("Question: " + numberA + " - " + numberB);
-                    try {
-                        Engine.input = Engine.scanner.nextLine();
-                        int number = Integer.parseInt(Engine.input);
-                        if (number == numberA - numberB) {
-                            System.out.println(Engine.correctInput);
-                            Engine.counter++;
-                            operationIndex = Engine.generator.nextInt(3) + 1;
-                            numberA = Engine.generator.nextInt(5) + 1;
-                            numberB = Engine.generator.nextInt(5) + 1;
-                        } else {
-                            var result = Engine.encloseInt(numberA - numberB);
-                            System.out.println(wrong + Engine.input);
-                            System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
-                            Engine.gameOver = true;
-                        }
-                    }  catch (NumberFormatException e) {
-                        System.out.println(Engine.error);
-                        Engine.gameOver = true;
-                    }
-                }
-                default -> System.out.println(Engine.error);
+        // Передача данных в движок
+        var randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+        var randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
+        int randomAction;
+        var action = "";
+        int result;
+        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+            randomAction = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOM_ACTION_INDEX) + 1;
+            if (randomAction == RANDOM_ACTION_INDEX - 2) {
+                action = "+";
+            } else if (randomAction == RANDOM_ACTION_INDEX - 1) {
+                action = "-";
+            } else if (randomAction == RANDOM_ACTION_INDEX) {
+                action = "*";
             }
+            switch (action) {
+                case "+" -> {
+                    Engine.GAME_DATA_BASE[i][0] = randomValue1 + " " + action + " " + randomValue2;
+
+                    result = randomValue1 + randomValue2;
+                    Engine.GAME_DATA_BASE[i][1] = "" + result;
+                }
+                case "-" -> {
+                    Engine.GAME_DATA_BASE[i][0] = randomValue1 + " " + action + " " + randomValue2;
+                    result = randomValue1 - randomValue2;
+                    Engine.GAME_DATA_BASE[i][1] = "" + result;
+                }
+                case "*" -> {
+                    Engine.GAME_DATA_BASE[i][0] = randomValue1 + " " + action + " " + randomValue2;
+                    result = randomValue1 * randomValue2;
+                    Engine.GAME_DATA_BASE[i][1] = "" + result;
+                }
+                default -> System.out.println("");
+            }
+            randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
         }
-        if (!Engine.gameOver) {
-            System.out.println("Congratulations, " + Engine.name + "!");
+        // Начало игры
+        Engine.startGame("What is the result of the expression?");
+        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
+            Engine.questionIs();
+            var userInput = Engine.getUserInput();
+            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
+        }
+        if (!Engine.getGameOverStatus()) {
+            Engine.printCongratMsg();
         }
     }
-    // Игра НОД.
-    public static void greatestCommonDivisor() {
-        Engine.dispGreetAndInit(3);
-
-        var numberA = Engine.generator.nextInt(99) + 1;
-        var numberB = Engine.generator.nextInt(99) + 1;
-        Engine.errB = Engine.errB + Engine.name;
-        int tempVar = numberB;
-        Integer gCD;
-        while (Engine.counter < 3 && !Engine.gameOver) {
-            System.out.println("Question: " + numberA + " " + numberB);
-            Engine.input = Engine.scanner.nextLine();
-            try {
-                Integer.parseInt(Engine.input);
-            } catch (NumberFormatException e) {
-                System.out.println(Engine.error);
-                Engine.gameOver = true;
-                break;
-            }
-            while (numberB != 0) { // Определение НОД
+    public static void gCD() {
+        // Передача данных в движок
+        int numberA;
+        int numberB;
+        int tempVar;
+        int gCD;
+        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+            numberA = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            numberB = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            Engine.GAME_DATA_BASE[i][0] = numberA + " " + numberB;
+            while (numberB != 0) {
                 tempVar = numberA % numberB;
                 numberA = numberB;
                 numberB = tempVar;
             }
             gCD = numberA;
-
-            if (Engine.input.equals(gCD.toString())) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
-                numberA = Engine.generator.nextInt(99) + 1;
-                numberB = Engine.generator.nextInt(99) + 1;
-            } else if (!Engine.input.equals(gCD.toString())) {
-                var result = Engine.encloseInt(gCD);
-                System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
-                Engine.gameOver = true;
-            }
+            Engine.GAME_DATA_BASE[i][1] = "" + gCD;
         }
-        if (!Engine.gameOver) {
-            System.out.println("Congratulations, " + Engine.name + "!");
+        // Начало игры
+        Engine.startGame("Find the greatest common divisor of given numbers.");
+        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
+            Engine.questionIs();
+            var userInput = Engine.getUserInput();
+            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
+        }
+        if (!Engine.getGameOverStatus()) {
+            Engine.printCongratMsg();
         }
     }
-    // Игра Прогрессия.
     public static void progression() {
-        Engine.dispGreetAndInit(4);
-
-        String lostNumber;
-        var index = Engine.generator.nextInt(8) + 1;
-        Engine.errB = Engine.errB + Engine.name;
-        while (Engine.counter < 3 && !Engine.gameOver) {
-            String[] array = Engine.generateList();
-            lostNumber = array[index];
-            array[index] = "..";
-            var formatedProg = Arrays.toString(array).replace("[", "").replace("]", "").replace(",", "");
-            System.out.println("Question: " + formatedProg);
-            Engine.input = Engine.scanner.nextLine();
-            try  {
-                Integer.parseInt(Engine.input);
-            } catch (NumberFormatException e) {
-                System.out.println(Engine.error);
-                Engine.gameOver = true;
-                break;
+        // Передача данных в движок
+        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+            String[] list = new String[PROGRESSION_SIZE];
+            var lostNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(list.length);
+            var firstNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL);
+            var step = Engine.RANDOM_NUM_GENERATOR.nextInt(STEP_BOUND) + 1;
+            list[0] = firstNumber + "";
+            for (int b = 1; b < list.length; b++) {
+                list[b] = Integer.parseInt(list[b - 1]) + step + "";
             }
-            if (Engine.input.equals(lostNumber)) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
-            } else if (!Engine.input.equals(lostNumber)) {
-                var result = Engine.encloseStr(lostNumber);
-                System.out.println(Engine.encloseStr(Engine.input) + Engine.errA + result + Engine.errB);
-                Engine.gameOver = true;
-            }
+            Engine.GAME_DATA_BASE[i][1] = list[lostNumber];
+            list[lostNumber] = "..";
+            var progression = Arrays.toString(list);
+            progression = progression.replace("[", "").replace("]", "");
+            Engine.GAME_DATA_BASE[i][0] =  progression.replace(",", "");
         }
-        if (!Engine.gameOver) {
-            System.out.println("Congratulations, " + Engine.name + "!");
+        // Начало игры
+        Engine.startGame("What number is missing in the progression?");
+        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
+            Engine.questionIs();
+            var userInput = Engine.getUserInput();
+            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
+        }
+        if (!Engine.getGameOverStatus()) {
+            Engine.printCongratMsg();
         }
     }
     public static void prime() {
-        Engine.dispGreetAndInit(5);
-
-        var number = Engine.generator.nextInt(120) + 1;
-        var wrongA = "'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ";
-        var wrongB = "'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ";
-        while (Engine.counter < 3 && !Engine.gameOver) {
-            System.out.println("Question: " + number);
-            Engine.input = Engine.scanner.nextLine();
-            if (Engine.input.equals("yes") && Engine.isPrime(number)) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
-                number = Engine.generator.nextInt(499) + 1;
-            } else if (Engine.input.equals("no") && !Engine.isPrime(number)) {
-                System.out.println(Engine.correctInput);
-                Engine.counter++;
-                number = Engine.generator.nextInt(499) + 1;
-            } else if (Engine.input.equals("no") && Engine.isPrime(number)) {
-                System.out.println(wrongB + Engine.name);
-                Engine.gameOver = true;
-            } else if (Engine.input.equals("yes") && !Engine.isPrime(number)) {
-                System.out.println(wrongA + Engine.name);
-                Engine.gameOver = true;
+        // Передача данных в движок
+        int randomNumber;
+        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+            randomNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            boolean numIsPrime = Misc.isPrime(randomNumber);
+            if (numIsPrime) {
+                Engine.GAME_DATA_BASE[i][0] = "" + randomNumber;
+                Engine.GAME_DATA_BASE[i][1] = "yes";
             } else {
-                System.out.println(Engine.error);
-                Engine.gameOver = true;
+                Engine.GAME_DATA_BASE[i][0] = "" + randomNumber;
+                Engine.GAME_DATA_BASE[i][1] = "no";
             }
+        }
+        // Начало игры
+        Engine.startGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
+            Engine.questionIs();
+            var userInput = Engine.getUserInput();
+            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
+        }
+        if (!Engine.getGameOverStatus()) {
+            Engine.printCongratMsg();
         }
     }
 }

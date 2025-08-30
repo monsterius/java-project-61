@@ -23,23 +23,23 @@ public class App {
                     Game.even();
                     goodbye = true;
                 }
-                case "3" -> {
+                case "3" ->  {
                     Game.calculator();
                     goodbye = true;
                 }
-                case "4" -> {
-                    Game.greatestCommonDivisor();
+                case "4" ->  {
+                    Game.gCD();
                     goodbye = true;
                 }
-                case "5" -> {
+                case "5" ->  {
                     Game.progression();
                     goodbye = true;
                 }
-                case "6" -> {
+                case "6" ->  {
                     Game.prime();
                     goodbye = true;
                 }
-                default -> goodbye = true;
+                default -> System.out.println("Error");
             }
         }
     }

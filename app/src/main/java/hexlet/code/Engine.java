@@ -4,86 +4,61 @@ import java.util.Scanner;
 
 public class Engine {
     // Общие переменные
-    public static Scanner scanner = new Scanner(System.in); // Сканер
-    public static int counter = 0; // Счетчик успешных решений
-    public static boolean gameOver = false; // Индикатор победы/поражения
-    public static Random generator = new Random(); // Генератор рандомных чисел
-    public static String name = ""; // Имя пользователя
-    public static String input = ""; // Ввод
-    public static String error = "Error"; // Ошибка формата ввода
-    public static String correctInput = "Correct!"; // Удачная попытка
-    public static String errA = " is wrong answer ;(. Correct answer was ";
-    public static String errB = "\nLet's try again, ";
+    private static final Scanner SCANNER = new Scanner(System.in); // Сканер
+    private static int counter = 0; // Счетчик успешных решений
+    private static boolean gameOver = false; // Индикатор победы/поражения
+    public static final  Random RANDOM_NUM_GENERATOR = new Random(); // Генератор рандомных чисел
+    private static String name = ""; // Имя пользователя
+    private static final int DATA_BASE_SIZE = 3; // Длина базы
+    public static final  String[][] GAME_DATA_BASE = new String[DATA_BASE_SIZE][2]; // База
     // Метод приветствия и запроса имени
-    public static void dispGreetAndInit(int variation) { // Приветствие и ввод имени
+    public static void startGame(String question) { // Приветствие и ввод имени
         counter = 0;
         var nameReq = "May I have your name?";
         var greet = "Hello, ";
-        switch (variation) {
-            case 1 -> { // Even
-                System.out.println(nameReq);
-                name = scanner.nextLine();
-                System.out.println(greet + name + "!");
-            }
-            case 2 -> { // Calculator
-                System.out.println(nameReq);
-                name = scanner.nextLine();
-                System.out.println(greet + name + "!\nWhat is the result of the expression?");
-            }
-            case 3 -> { // GCD
-                System.out.println(nameReq);
-                name = scanner.nextLine();
-                System.out.println(greet + name + "!\nFind the greatest common divisor of given numbers.");
-            }
-            case 4 -> { // Progression
-                System.out.println(nameReq);
-                name = scanner.nextLine();
-                System.out.println(greet + name + "!\nWhat number is missing in the progression?");
-            }
-            case 5 -> {
-                System.out.println(nameReq);
-                name = scanner.nextLine();
-                System.out.println(greet + name + "!");
-                System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-            }
-            default -> System.out.println(error);
+        System.out.println(nameReq);
+        name = SCANNER.nextLine();
+        System.out.println(greet + name + "!\n" + question);
+    }
+    // Метод вывода вопроса
+    public static void questionIs() {
+        System.out.println("Question: " + GAME_DATA_BASE[counter][0]);
+    }
+    // Метод сравнения результата с правильным ответом
+    public static void checkAnswer(String answer, String result) {
+        var partA = " is wrong answer ;(. Correct answer was ";
+        var partB =  "\nLet's try again, ";
+        String correctInput = "Correct!";
+        if (answer.equals(GAME_DATA_BASE[counter][1])) {
+            System.out.println(correctInput);
+            counter++;
+        } else {
+            System.out.println(encloseStr(answer) + partA + encloseStr(result) + "." + partB + name + "!");
+            gameOver = true;
         }
     }
-    // Методы возврата инпута String или int в требуемом формате
+    // Вывод поздравления
+    public static void printCongratMsg() {
+        System.out.println("Congratulations, " + name + "!");
+    }
+    // Методы возврата инпута String в нужном формате
     public static String encloseStr(String str) {
         return "'" + str + "'";
     }
-    public static String encloseInt(int integer) {
-        return "'" + integer + "'";
+    public static String getUserInput() {
+        return Engine.SCANNER.nextLine();
     }
-    // Генератор числовой последовательности
-    public static String[] generateList() {
-        String[] list = new String[9];
-        var firstNumber = generator.nextInt(15);
-        var step = generator.nextInt(6) + 1;
-        list[0] = firstNumber + "";
-        for (int i = 1; i < list.length; i++) {
-            list[i] = Integer.parseInt(list[i - 1]) + step + "";
-        }
-        return list;
+    public static int getCurrentGameStage() {
+        return counter;
     }
-    // Метод определения простого числа
-    public static boolean isPrime(int n) {
-        if (n <= 1) {
-            return false;
+    public static boolean getGameOverStatus() {
+        return gameOver;
+    }
+    public static void setGameOverStatus(boolean status) {
+        if  (status) {
+            Engine.gameOver = true;
+        } else {
+            Engine.gameOver = false;
         }
-        if (n == 2) {
-            return true;
-        }
-        if (n % 2 == 0) {
-            return false;
-        }
-        int sqrtN = (int) Math.sqrt(n);
-        for (int i = 3; i <= sqrtN; i += 2) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
