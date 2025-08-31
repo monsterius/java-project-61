@@ -23,7 +23,7 @@ public class Even {
         // Начало игры
         Engine.startGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
         while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
-            Engine.questionIs();
+            Engine.askQuestion();
             var userInput = Engine.getUserInput();
             Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
         }

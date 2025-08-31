@@ -48,7 +48,7 @@ public class Calculator {
         // Начало игры
         Engine.startGame("What is the result of the expression?");
         while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
-            Engine.questionIs();
+            Engine.askQuestion();
             var userInput = Engine.getUserInput();
             Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
         }

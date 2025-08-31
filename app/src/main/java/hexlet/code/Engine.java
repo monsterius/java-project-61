@@ -21,7 +21,7 @@ public class Engine {
         System.out.println(greet + name + "!\n" + question);
     }
     // Метод вывода вопроса
-    public static void questionIs() {
+    public static void askQuestion() {
         System.out.println("Question: " + GAME_DATA_BASE[counter][0]);
     }
     // Метод сравнения результата с правильным ответом
@@ -37,11 +37,9 @@ public class Engine {
             gameOver = true;
         }
     }
-    // Вывод поздравления
     public static void printCongratMsg() {
         System.out.println("Congratulations, " + name + "!");
     }
-    // Методы возврата инпута String в нужном формате
     public static String encloseStr(String str) {
         return "'" + str + "'";
     }
@@ -53,12 +51,5 @@ public class Engine {
     }
     public static boolean getGameOverStatus() {
         return gameOver;
-    }
-    public static void setGameOverStatus(boolean status) {
-        if  (status) {
-            Engine.gameOver = true;
-        } else {
-            Engine.gameOver = false;
-        }
     }
 }

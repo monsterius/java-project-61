@@ -26,7 +26,7 @@ public class Gcd {
         // Начало игры
         Engine.startGame("Find the greatest common divisor of given numbers.");
         while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
-            Engine.questionIs();
+            Engine.askQuestion();
             var userInput = Engine.getUserInput();
             Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
         }
