@@ -3,7 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Prime {
-    private static final int ROUNDS_TODO = 3;
     private static final int RANDOMBOUNDBIG = 50;
     private static final  int INDEX = 3;
 
@@ -38,14 +37,7 @@ public class Prime {
             }
         }
         // Начало игры
-        Engine.startGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        while (!Engine.getGameOverStatus() && Engine.getCurrentGameStage() < ROUNDS_TODO) {
-            Engine.askQuestion();
-            var userInput = Engine.getUserInput();
-            Engine.checkAnswer(userInput, Engine.GAME_DATA_BASE[Engine.getCurrentGameStage()][1]);
-        }
-        if (!Engine.getGameOverStatus()) {
-            Engine.printCongratMsg();
-        }
+        var question = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        Engine.startGame(question);
     }
 }
