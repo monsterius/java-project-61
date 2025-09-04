@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 public class Even {
     private static final int RANDOMBOUNDBIG = 50;
 
-    public static boolean calcIsEven(int number) {
+    public static boolean IsEven(int number) {
         return number % 2 == 0;
     }
     public static void evenGame() {
@@ -15,7 +15,7 @@ public class Even {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             randomValue = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             gameData[i][0] = randomValue + "";
-            if (calcIsEven(randomValue)) {
+            if (IsEven(randomValue)) {
                 gameData[i][1] = "yes";
             } else {
                 gameData[i][1] = "no";
