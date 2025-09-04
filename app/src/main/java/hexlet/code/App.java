@@ -18,24 +18,12 @@ public class App {
                     System.out.println("Welcome to the Brain Games!");
                     Cli.welcome();
                 }
-                case "0" -> {
-                    System.out.println("Goodbye!");
-                }
-                case "2" ->  {
-                    Even.evenGame();
-                }
-                case "3" ->  {
-                    Calculator.calculatorGame();
-                }
-                case "4" ->  {
-                    Gcd.gCDGame();
-                }
-                case "5" ->  {
-                    Progression.progressionGame();
-                }
-                case "6" ->  {
-                    Prime.primeGame();
-                }
+                case "0" -> System.out.println("Goodbye!");
+                case "2" ->  Even.evenGame();
+                case "3" -> Calculator.calculatorGame();
+                case "4" -> Gcd.gCDGame();
+                case "5" -> Progression.progressionGame();
+                case "6" -> Prime.primeGame();
                 default -> System.out.println("Error! " + Engine.encloseStr(game) + " is not a valid game number.");
             }
         }
