@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.Arrays;
 
@@ -14,9 +15,9 @@ public class Progression {
         String progression;
         String[] result = new String[2];
         String numToLook;
-        var lostNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(array.length);
-        var firstNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL);
-        var step = Engine.RANDOM_NUM_GENERATOR.nextInt(STEP_BOUND) + 1;
+        var lostNumber = Utils.getRandomNumber(array.length);
+        var firstNumber = Utils.getRandomNumber(RANDOMBOUNDSMALL);;
+        var step = Utils.getRandomNumber(STEP_BOUND);
         array[0] = firstNumber + "";
         for (int i = 1; i < array.length; i++) {
             array[i] = Integer.parseInt(array[i - 1]) + step + "";

@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Gcd {
     private static final int RANDOMBOUNDBIG = 50;
@@ -23,8 +24,8 @@ public class Gcd {
         int numberB;
         int gCD;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            numberA = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
-            numberB = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            numberA = Utils.getRandomNumber(RANDOMBOUNDBIG);
+            numberB = Utils.getRandomNumber(RANDOMBOUNDBIG);
             gCD = calculateGcd(numberA, numberB);
             gameData[i][0] = numberA + " " + numberB;
             gameData[i][1] = gCD + "";

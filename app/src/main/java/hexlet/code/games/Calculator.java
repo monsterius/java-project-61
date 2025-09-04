@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Calculator {
     private static final int RANDOMBOUNDBIG = 50;
@@ -19,18 +20,18 @@ public class Calculator {
     public static void calculatorGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        var randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
-        var randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
+        var randomValue1 = Utils.getRandomNumber(RANDOMBOUNDBIG);
+        var randomValue2 = Utils.getRandomNumber(RANDOMBOUNDSMALL);
         String[] actionList = {" + ", " - ", " * "};
-        var actionIndex = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
+        var actionIndex = Utils.getRandomNumber(actionList.length);
         for (int i = 0; i < Engine.ROUNDS; i++) {
             var randAction = actionList[actionIndex - 1];
             int result = calculateResult(randomValue1, randomValue2, randAction);
             gameData[i][0] = "" + randomValue1 + randAction + randomValue2;
             gameData[i][1] = result + "";
-            randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
-            randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
-            actionIndex = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
+            randomValue1 = Utils.getRandomNumber(RANDOMBOUNDBIG);
+            randomValue2 = Utils.getRandomNumber(RANDOMBOUNDSMALL);
+            actionIndex = Utils.getRandomNumber(actionList.length);
         }
         // Начало игры
         var question = "What is the result of the expression?";

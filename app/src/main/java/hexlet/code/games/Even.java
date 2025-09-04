@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Even {
     private static final int RANDOMBOUNDBIG = 50;
@@ -13,7 +14,7 @@ public class Even {
         int randomValue;
         String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            randomValue = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            randomValue = Utils.getRandomNumber(RANDOMBOUNDBIG);
             gameData[i][0] = randomValue + "";
             if (IsEven(randomValue)) {
                 gameData[i][1] = "yes";

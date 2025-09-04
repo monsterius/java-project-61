@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Prime {
     private static final int RANDOMBOUNDBIG = 50;
@@ -27,7 +28,7 @@ public class Prime {
         String[][] gameData = new String[Engine.ROUNDS][2];
         int randomNumber;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            randomNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
+            randomNumber = Utils.getRandomNumber(RANDOMBOUNDBIG);;
             boolean numIsPrime = isPrime(randomNumber);
             if (numIsPrime) {
                 gameData[i][0] = "" + randomNumber;

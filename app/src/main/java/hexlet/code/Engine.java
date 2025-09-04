@@ -7,7 +7,6 @@ public class Engine {
     private static final Scanner SCANNER = new Scanner(System.in); // Сканер
     private static int counter = 0; // Счетчик успешных решений
     private static boolean gameOver = false; // Индикатор победы/поражения
-    public static final  Random RANDOM_NUM_GENERATOR = new Random(); // Генератор рандомных чисел
     private static String name = ""; // Имя пользователя
     public static final int ROUNDS = 3;
     // Начало игры
