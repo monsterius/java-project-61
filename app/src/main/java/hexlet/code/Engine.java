@@ -37,12 +37,13 @@ public class Engine {
         }
         if (!gameOver) {
             System.out.println("Congratulations, " + name + "!");
+            gameOver = true;
         }
     }
     public static String encloseStr(String str) {
         return "'" + str + "'";
     }
-    public static int getCurrentGameStage() {
-        return counter;
+    public static boolean getGameOverStatus() {
+        return gameOver;
     }
 }
