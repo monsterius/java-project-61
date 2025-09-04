@@ -7,7 +7,7 @@ public class Even {
     private static final int RANDOM_NUM_MIN = 1;
     private static final int RANDOM_NUM_MAX = 50;
 
-    public static boolean IsEven(int number) {
+    public static boolean isEven(int number) {
         return number % 2 == 0;
     }
     public static void evenGame() {
@@ -17,7 +17,7 @@ public class Even {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             randomValue = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
             gameData[i][0] = randomValue + "";
-            if (IsEven(randomValue)) {
+            if (isEven(randomValue)) {
                 gameData[i][1] = "yes";
             } else {
                 gameData[i][1] = "no";

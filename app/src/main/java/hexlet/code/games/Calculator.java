@@ -10,9 +10,15 @@ public class Calculator {
     public static int calculateResult(int num1, int num2, String action) {
         int result = 0;
         switch (action) {
-            case " + " -> result =  num1 + num2;
-            case  " - " -> result =  num1 - num2;
-            case " * " -> result =  num1 * num2;
+            case " + " -> {
+                result =  num1 + num2;
+            }
+            case  " - " -> {
+                result =  num1 - num2;
+            }
+            case " * " -> {
+                result =  num1 * num2;
+            }
             default -> System.out.println("");
         }
         return result;

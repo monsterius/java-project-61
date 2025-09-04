@@ -16,7 +16,7 @@ public class Progression {
         String progression;
         String[] result = new String[2];
         String numToLook;
-        var lostNumber = Utils.getRandomNumber(RANDOM_NUM_MIN,array.length);
+        var lostNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, array.length);
         array[0] = firstNum + "";
         for (int i = 1; i < array.length; i++) {
             array[i] = Integer.parseInt(array[i - 1]) + step + "";

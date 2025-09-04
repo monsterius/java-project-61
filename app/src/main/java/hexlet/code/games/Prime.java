@@ -27,9 +27,8 @@ public class Prime {
     public static void primeGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        int randomNumber;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            randomNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);;
+            int randomNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
             boolean numIsPrime = isPrime(randomNumber);
             if (numIsPrime) {
                 gameData[i][0] = "" + randomNumber;
