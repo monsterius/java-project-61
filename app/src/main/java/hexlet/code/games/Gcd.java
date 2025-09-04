@@ -18,6 +18,7 @@ public class Gcd {
     }
     public static void gCDGame() {
         // Передача данных в движок
+        String[][] gameData = new String[Engine.ROUNDS][2];
         int numberA;
         int numberB;
         int gCD;
@@ -25,11 +26,11 @@ public class Gcd {
             numberA = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             numberB = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             gCD = calculateGcd(numberA, numberB);
-            Engine.GAME_DATA_BASE[i][0] = numberA + " " + numberB;
-            Engine.GAME_DATA_BASE[i][1] = gCD + "";
+            gameData[i][0] = numberA + " " + numberB;
+            gameData[i][1] = gCD + "";
         }
         // Начало игры
         var question = "Find the greatest common divisor of given numbers.";
-        Engine.startGame(question);
+        Engine.startGame(question, gameData);
     }
 }

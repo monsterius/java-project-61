@@ -11,17 +11,18 @@ public class Even {
     public static void evenGame() {
         // Передача данных в движок
         int randomValue;
+        String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
             randomValue = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
-            Engine.GAME_DATA_BASE[i][0] = randomValue + "";
+            gameData[i][0] = randomValue + "";
             if (calcIsEven(randomValue)) {
-                Engine.GAME_DATA_BASE[i][1] = "yes";
+                gameData[i][1] = "yes";
             } else {
-                Engine.GAME_DATA_BASE[i][1] = "no";
+                gameData[i][1] = "no";
             }
         }
         // Начало игры
         var question = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        Engine.startGame(question);
+        Engine.startGame(question, gameData);
     }
 }

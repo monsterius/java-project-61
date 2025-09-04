@@ -24,20 +24,21 @@ public class Prime {
     }
     public static void primeGame() {
         // Передача данных в движок
+        String[][] gameData = new String[Engine.ROUNDS][2];
         int randomNumber;
-        for (int i = 0; i < Engine.GAME_DATA_BASE.length; i++) {
+        for (int i = 0; i < Engine.ROUNDS; i++) {
             randomNumber = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             boolean numIsPrime = isPrime(randomNumber);
             if (numIsPrime) {
-                Engine.GAME_DATA_BASE[i][0] = "" + randomNumber;
-                Engine.GAME_DATA_BASE[i][1] = "yes";
+                gameData[i][0] = "" + randomNumber;
+                gameData[i][1] = "yes";
             } else {
-                Engine.GAME_DATA_BASE[i][0] = "" + randomNumber;
-                Engine.GAME_DATA_BASE[i][1] = "no";
+                gameData[i][0] = "" + randomNumber;
+                gameData[i][1] = "no";
             }
         }
         // Начало игры
         var question = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        Engine.startGame(question);
+        Engine.startGame(question, gameData);
     }
 }

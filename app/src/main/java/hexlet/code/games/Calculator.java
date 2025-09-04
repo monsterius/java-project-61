@@ -29,20 +29,21 @@ public class Calculator {
     }
     public static void calculatorGame() {
         // Передача данных в движок
+        String[][] gameData = new String[Engine.ROUNDS][2];
         var randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
         var randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
         String[] actionList = {"+", "-", "*"};
         var action = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
         for (int i = 0; i < Engine.ROUNDS; i++) {
             String[] result = calculateResult(randomValue1, randomValue2, actionList[action - 1]);
-            Engine.GAME_DATA_BASE[i][0] = result[0];
-            Engine.GAME_DATA_BASE[i][1] = result[1];
+            gameData[i][0] = result[0];
+            gameData[i][1] = result[1];
             randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
             action = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
         }
         // Начало игры
         var question = "What is the result of the expression?";
-        Engine.startGame(question);
+        Engine.startGame(question, gameData);
     }
 }

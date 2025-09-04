@@ -10,9 +10,8 @@ public class Engine {
     public static final  Random RANDOM_NUM_GENERATOR = new Random(); // Генератор рандомных чисел
     private static String name = ""; // Имя пользователя
     public static final int ROUNDS = 3;
-    public static final  String[][] GAME_DATA_BASE = new String[ROUNDS][2]; // База
     // Начало игры
-    public static void startGame(String question) { // Приветствие и ввод имени
+    public static void startGame(String question, String[][] gameData) { // Приветствие и ввод имени
         counter = 0;
         var nameReq = "May I have your name?";
         var greet = "Hello, ";
@@ -24,9 +23,9 @@ public class Engine {
         name = SCANNER.nextLine();
         System.out.println(greet + name + "!\n" + question);
         while (!gameOver && counter < ROUNDS) {
-            System.out.println("Question: " + GAME_DATA_BASE[counter][0]);
+            System.out.println("Question: " + gameData[counter][0]);
             var userInput = SCANNER.nextLine();
-            var result = GAME_DATA_BASE[counter][1];
+            var result = gameData[counter][1];
             if (userInput.equals(result)) {
                 System.out.println(correctInput);
                 counter++;

@@ -30,13 +30,14 @@ public class Progression {
     }
     public static void progressionGame() {
         // Передача данных в движок
+        String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
             var dataToTransfer = calculateProgression();
-            Engine.GAME_DATA_BASE[i][0] = dataToTransfer[0];
-            Engine.GAME_DATA_BASE[i][1] = dataToTransfer[1];
+            gameData[i][0] = dataToTransfer[0];
+            gameData[i][1] = dataToTransfer[1];
         }
         // Начало игры
         var question = "What number is missing in the progression?";
-        Engine.startGame(question);
+        Engine.startGame(question, gameData);
     }
 }
