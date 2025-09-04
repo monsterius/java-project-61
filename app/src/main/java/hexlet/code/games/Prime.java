@@ -4,7 +4,8 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-    private static final int RANDOMBOUNDBIG = 50;
+    private static final int RANDOM_NUM_MIN = 1;
+    private static final int RANDOM_NUM_MAX = 50;
     private static final  int INDEX = 3;
 
     public static boolean isPrime(int number) {
@@ -28,7 +29,7 @@ public class Prime {
         String[][] gameData = new String[Engine.ROUNDS][2];
         int randomNumber;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            randomNumber = Utils.getRandomNumber(RANDOMBOUNDBIG);;
+            randomNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);;
             boolean numIsPrime = isPrime(randomNumber);
             if (numIsPrime) {
                 gameData[i][0] = "" + randomNumber;

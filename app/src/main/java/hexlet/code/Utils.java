@@ -5,8 +5,8 @@ import java.util.Random;
 public class Utils {
     private static final Random RANDOM_NUM_GENERATOR = new Random();
 
-    public static int getRandomNumber(int range) {
-        int randomInt = RANDOM_NUM_GENERATOR.nextInt(range) + 1;
+    public static int getRandomNumber(int min, int max) {
+        int randomInt = RANDOM_NUM_GENERATOR.nextInt(max - min + 1) + min;
         return randomInt;
     }
 }
