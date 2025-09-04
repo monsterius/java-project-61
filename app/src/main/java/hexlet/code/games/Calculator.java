@@ -6,20 +6,17 @@ public class Calculator {
     private static final int RANDOMBOUNDBIG = 50;
     private static final int RANDOMBOUNDSMALL = 25;
 
-    public static String[] calculateResult(int num1, int num2, String action) {
-        String[] result = new  String[2];
+    public static int calculateResult(int num1, int num2, String action) {
+        int result = 0;
         switch (action) {
-            case "+" -> {
-                result[0] = num1 + " + " + num2;
-                result[1] = num1 + num2 + "";
+            case " + " -> {
+                result =  num1 + num2;
             }
-            case  "-" -> {
-                result[0] = num1 + " - " + num2;
-                result[1] = num1 - num2 + "";
+            case  " - " -> {
+                result =  num1 - num2;
             }
-            case "*" -> {
-                result[0] = num1 + " * " + num2;
-                result[1] = num1 * num2 + "";
+            case " * " -> {
+                result =  num1 * num2;
             }
             default -> {
                 System.out.println("");
@@ -32,15 +29,16 @@ public class Calculator {
         String[][] gameData = new String[Engine.ROUNDS][2];
         var randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
         var randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
-        String[] actionList = {"+", "-", "*"};
-        var action = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
+        String[] actionList = {" + ", " - ", " * "};
+        var actionIndex = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            String[] result = calculateResult(randomValue1, randomValue2, actionList[action - 1]);
-            gameData[i][0] = result[0];
-            gameData[i][1] = result[1];
+            var randAction = actionList[actionIndex - 1];
+            int result = calculateResult(randomValue1, randomValue2, randAction);
+            gameData[i][0] = "" + randomValue1 + randAction + randomValue2;
+            gameData[i][1] = result + "";
             randomValue1 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDBIG) + 1;
             randomValue2 = Engine.RANDOM_NUM_GENERATOR.nextInt(RANDOMBOUNDSMALL) + 1;
-            action = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
+            actionIndex = Engine.RANDOM_NUM_GENERATOR.nextInt(actionList.length) + 1;
         }
         // Начало игры
         var question = "What is the result of the expression?";
