@@ -31,7 +31,7 @@ public class Progression {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             String progressionToProcess = createProgression(firstNum, step, PROGRESSION_LENGTH);
             String[] arrayProgression = progressionToProcess.split(" ");
-            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, arrayProgression.length);
+            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, PROGRESSION_LENGTH - 1);
             String numToLook = arrayProgression[index];
             String finalProgression = progressionToProcess.replace(numToLook, "..");
             gameData[i][0] = finalProgression;
