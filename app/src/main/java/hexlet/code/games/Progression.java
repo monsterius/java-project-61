@@ -11,21 +11,16 @@ public class Progression {
     private static final int STEP_RANGE = 10;
     private static final int PROGRESSION_LENGTH = 10;
 
-    public static String[] createProgression(int firstNum, int step, int length) {
+    public static String createProgression(int firstNum, int step, int length) {
         String[] array = new String[length];
         String progression;
-        String[] result = new String[2];
-        String numToLook;
-        var lostNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, array.length);
+        String result;
         array[0] = firstNum + "";
         for (int i = 1; i < array.length; i++) {
             array[i] = Integer.parseInt(array[i - 1]) + step + "";
         }
-        numToLook = array[lostNumber];
-        array[lostNumber] = "..";
         progression = Arrays.toString(array).replace("[", "").replace("]", "").replace(",", "");
-        result[0] = progression;
-        result[1] = numToLook;
+        result = progression;
         return result;
     }
     public static void progressionGame() {
@@ -34,9 +29,13 @@ public class Progression {
         int step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
         int firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            var dataToTransfer = createProgression(firstNum, step, PROGRESSION_LENGTH);
-            gameData[i][0] = dataToTransfer[0];
-            gameData[i][1] = dataToTransfer[1];
+            String progressionToProcess = createProgression(firstNum, step, PROGRESSION_LENGTH);
+            String[] arrayProgression = progressionToProcess.split(" ");
+            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, arrayProgression.length);
+            String numToLook = arrayProgression[index];
+            String finalProgression = progressionToProcess.replace(numToLook, "..");
+            gameData[i][0] = finalProgression;
+            gameData[i][1] = numToLook;
             step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
             firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
         }
