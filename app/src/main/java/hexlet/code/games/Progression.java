@@ -21,17 +21,17 @@ public class Progression {
     public static void progressionGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        final int PROGRESSION_LENGTH = 10;
-        final int PROGRESSION_LENGTH_INDEX_MAX = 9;
-        final int STEP_RANGE = 10;
-        final int RANDOM_NUM_MAX = 40;
-        final int RANDOM_NUM_MIN = 1;
+        final int progressionLength = 10;
+        final int progressionLengthIndexMax = 9;
+        final int stepRange = 10;
+        final int randomNumMax = 40;
+        final int randomNumMin = 1;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
-            int firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
-            String progressionToProcess = createProgression(firstNum, step, PROGRESSION_LENGTH);
+            int step = Utils.getRandomNumber(randomNumMin, stepRange);
+            int firstNum = Utils.getRandomNumber(randomNumMin, randomNumMax);
+            String progressionToProcess = createProgression(firstNum, step, progressionLength);
             String[] arrayProgression = progressionToProcess.split(" ");
-            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, PROGRESSION_LENGTH_INDEX_MAX);
+            int index = Utils.getRandomNumber(randomNumMin, progressionLengthIndexMax);
             String numToLook = arrayProgression[index];
             String finalProgression = progressionToProcess.replace(numToLook, "..");
             gameData[i][0] = finalProgression;

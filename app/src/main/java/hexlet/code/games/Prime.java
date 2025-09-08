@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 public class Prime {
     public static boolean isPrime(int number) {
-        final int INDEX = 3;
+        final int index = 3;
         if (number <= 1) {
             return false;
         } else if (number == 2) {
@@ -14,7 +14,7 @@ public class Prime {
             return false;
         }
         int sqrtN = (int) Math.sqrt(number);
-        for (int i = INDEX; i <= sqrtN; i += 2) {
+        for (int i = index; i <= sqrtN; i += 2) {
             if (number % i == 0) {
                 return false;
             }
@@ -24,10 +24,10 @@ public class Prime {
     public static void primeGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        final int RANDOM_NUM_MIN = 1;
-        final int RANDOM_NUM_MAX = 50;
+        final int randomNumMin = 1;
+        final int randomNumMax = 50;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int randomNumber = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
+            int randomNumber = Utils.getRandomNumber(randomNumMin, randomNumMax);
             boolean numIsPrime = isPrime(randomNumber);
             if (numIsPrime) {
                 gameData[i][0] = "" + randomNumber;

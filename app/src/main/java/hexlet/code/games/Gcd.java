@@ -17,12 +17,12 @@ public class Gcd {
     }
     public static void gCDGame() {
         // Передача данных в движок
-        final int RANDOM_NUM_MIN = 1;
-        final int RANDOM_NUM_MAX = 25;
+        final int randomNumMin = 1;
+        final int randomNumMax = 25;
         String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int numberA = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
-            int numberB = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
+            int numberA = Utils.getRandomNumber(randomNumMin, randomNumMax);
+            int numberB = Utils.getRandomNumber(randomNumMin, randomNumMax);
             int gCD = calculateGcd(numberA, numberB);
             gameData[i][0] = numberA + " " + numberB;
             gameData[i][1] = gCD + "";
