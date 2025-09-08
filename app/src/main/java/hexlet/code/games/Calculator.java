@@ -6,6 +6,7 @@ import hexlet.code.Utils;
 public class Calculator {
     private static final int RANDOM_NUM_MIN = 1;
     private static final int RANDOM_NUM_MAX = 50;
+    private static final int ACTION_INDEX_MAX_BOUND = 2;
 
     public static int calculateResult(int num1, int num2, String action) {
         int result = 0;
@@ -29,9 +30,9 @@ public class Calculator {
         var randomValue1 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
         var randomValue2 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
         String[] actionList = {" + ", " - ", " * "};
-        var actionIndex = Utils.getRandomNumber(RANDOM_NUM_MIN, actionList.length);
+        var actionIndex = Utils.getRandomNumber(RANDOM_NUM_MIN, ACTION_INDEX_MAX_BOUND);
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            var randAction = actionList[actionIndex - 1];
+            var randAction = actionList[actionIndex];
             int result = calculateResult(randomValue1, randomValue2, randAction);
             gameData[i][0] = "" + randomValue1 + randAction + randomValue2;
             gameData[i][1] = result + "";

@@ -10,6 +10,7 @@ public class Progression {
     private static final int RANDOM_NUM_MAX = 40;
     private static final int STEP_RANGE = 10;
     private static final int PROGRESSION_LENGTH = 10;
+    private static final int PROGRESSION_LENGTH_INDEX_MAX = 9;
 
     public static String createProgression(int firstNum, int step, int length) {
         String[] array = new String[length];
@@ -31,7 +32,7 @@ public class Progression {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             String progressionToProcess = createProgression(firstNum, step, PROGRESSION_LENGTH);
             String[] arrayProgression = progressionToProcess.split(" ");
-            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, PROGRESSION_LENGTH - 1);
+            int index = Utils.getRandomNumber(RANDOM_NUM_MIN, PROGRESSION_LENGTH_INDEX_MAX);
             String numToLook = arrayProgression[index];
             String finalProgression = progressionToProcess.replace(numToLook, "..");
             gameData[i][0] = finalProgression;
