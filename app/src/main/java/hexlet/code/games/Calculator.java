@@ -4,10 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calculator {
-    private static final int RANDOM_NUM_MIN = 1;
-    private static final int RANDOM_NUM_MAX = 50;
-    private static final int ACTION_INDEX_MAX_BOUND = 2;
-
     public static int calculateResult(int num1, int num2, String action) {
         int result = 0;
         switch (action) {
@@ -26,6 +22,9 @@ public class Calculator {
     }
     public static void calculatorGame() {
         // Передача данных в движок
+        final int RANDOM_NUM_MIN = 1;
+        final int RANDOM_NUM_MAX = 50;
+        final int ACTION_INDEX_MAX_BOUND = 2;
         String[][] gameData = new String[Engine.ROUNDS][2];
         String[] actionList = {" + ", " - ", " * "};
         for (int i = 0; i < Engine.ROUNDS; i++) {

@@ -4,9 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Gcd {
-    private static final int RANDOM_NUM_MIN = 1;
-    private static final int RANDOM_NUM_MAX = 25;
-
     public static int calculateGcd(int num1, int num2) {
         int temp;
         int result;
@@ -20,6 +17,8 @@ public class Gcd {
     }
     public static void gCDGame() {
         // Передача данных в движок
+        final int RANDOM_NUM_MIN = 1;
+        final int RANDOM_NUM_MAX = 25;
         String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int numberA = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);

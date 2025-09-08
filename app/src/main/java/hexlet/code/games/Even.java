@@ -4,14 +4,13 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
-    private static final int RANDOM_NUM_MIN = 1;
-    private static final int RANDOM_NUM_MAX = 50;
-
     public static boolean isEven(int number) {
         return number % 2 == 0;
     }
     public static void evenGame() {
         // Передача данных в движок
+        final int RANDOM_NUM_MIN = 1;
+        final int RANDOM_NUM_MAX = 50;
         String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int randomValue = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
