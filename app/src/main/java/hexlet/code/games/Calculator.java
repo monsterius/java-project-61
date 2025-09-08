@@ -27,18 +27,15 @@ public class Calculator {
     public static void calculatorGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        var randomValue1 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
-        var randomValue2 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
         String[] actionList = {" + ", " - ", " * "};
-        var actionIndex = Utils.getRandomNumber(RANDOM_NUM_MIN, ACTION_INDEX_MAX_BOUND);
         for (int i = 0; i < Engine.ROUNDS; i++) {
+            var randomValue1 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
+            var randomValue2 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
+            var actionIndex = Utils.getRandomNumber(RANDOM_NUM_MIN, ACTION_INDEX_MAX_BOUND);
             var randAction = actionList[actionIndex];
             int result = calculateResult(randomValue1, randomValue2, randAction);
             gameData[i][0] = "" + randomValue1 + randAction + randomValue2;
             gameData[i][1] = result + "";
-            randomValue1 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
-            randomValue2 = Utils.getRandomNumber(RANDOM_NUM_MIN,  RANDOM_NUM_MAX);
-            actionIndex = Utils.getRandomNumber(RANDOM_NUM_MIN, actionList.length);
         }
         // Начало игры
         var question = "What is the result of the expression?";

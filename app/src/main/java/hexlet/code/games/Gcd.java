@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 public class Gcd {
     private static final int RANDOM_NUM_MIN = 1;
-    private static final int RANDOM_NUM_MAX = 50;
+    private static final int RANDOM_NUM_MAX = 25;
 
     public static int calculateGcd(int num1, int num2) {
         int temp;
@@ -21,13 +21,10 @@ public class Gcd {
     public static void gCDGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        int numberA;
-        int numberB;
-        int gCD;
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            numberA = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
-            numberB = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
-            gCD = calculateGcd(numberA, numberB);
+            int numberA = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
+            int numberB = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
+            int gCD = calculateGcd(numberA, numberB);
             gameData[i][0] = numberA + " " + numberB;
             gameData[i][1] = gCD + "";
         }

@@ -12,10 +12,9 @@ public class Even {
     }
     public static void evenGame() {
         // Передача данных в движок
-        int randomValue;
         String[][] gameData = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            randomValue = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
+            int randomValue = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
             gameData[i][0] = randomValue + "";
             if (isEven(randomValue)) {
                 gameData[i][1] = "yes";

@@ -27,9 +27,9 @@ public class Progression {
     public static void progressionGame() {
         // Передача данных в движок
         String[][] gameData = new String[Engine.ROUNDS][2];
-        int step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
-        int firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
         for (int i = 0; i < Engine.ROUNDS; i++) {
+            int step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
+            int firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
             String progressionToProcess = createProgression(firstNum, step, PROGRESSION_LENGTH);
             String[] arrayProgression = progressionToProcess.split(" ");
             int index = Utils.getRandomNumber(RANDOM_NUM_MIN, PROGRESSION_LENGTH_INDEX_MAX);
@@ -37,8 +37,6 @@ public class Progression {
             String finalProgression = progressionToProcess.replace(numToLook, "..");
             gameData[i][0] = finalProgression;
             gameData[i][1] = numToLook;
-            step = Utils.getRandomNumber(RANDOM_NUM_MIN, STEP_RANGE);
-            firstNum = Utils.getRandomNumber(RANDOM_NUM_MIN, RANDOM_NUM_MAX);
         }
         // Начало игры
         var question = "What number is missing in the progression?";
