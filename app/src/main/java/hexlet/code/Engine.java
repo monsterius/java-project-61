@@ -28,7 +28,8 @@ public class Engine {
                 System.out.println(correctInput);
                 counter++;
             } else {
-                System.out.println(encloseStr(userInput) + partA + encloseStr(result) + "." + partB + name + "!");
+                System.out.print("'" + userInput + "'"  + partA + "'" + result + "'.");
+                System.out.print(partB + name + "!");
                 gameOver = true;
             }
         }
@@ -36,11 +37,5 @@ public class Engine {
             System.out.println("Congratulations, " + name + "!");
             gameOver = true;
         }
-    }
-    public static String encloseStr(String str) {
-        return "'" + str + "'";
-    }
-    public static boolean getGameOverStatus() {
-        return gameOver;
     }
 }

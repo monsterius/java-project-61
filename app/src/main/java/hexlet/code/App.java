@@ -35,7 +35,7 @@ public class App {
             case "6" -> {
                 Prime.primeGame();
             }
-            default -> System.out.println("Error! " + Engine.encloseStr(game) + " is not a valid game number.");
+            default -> System.out.println("Error! " + "'" + game + "'" + " is not a valid game number.");
         }
     }
 }
