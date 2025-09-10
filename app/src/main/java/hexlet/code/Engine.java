@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Engine {
     // Общие переменные
     private static final Scanner SCANNER = new Scanner(System.in); // Сканер
-    private static boolean gameOver = false; // Индикатор победы/поражения
     public static final int ROUNDS = 3;
     // Начало игры
     public static void startGame(String question, String[][] gameData) { // Приветствие и ввод имени
@@ -13,7 +12,7 @@ public class Engine {
         var nameReq = "May I have your name?";
         var greet = "Hello, ";
         var partA = " is wrong answer ;(. Correct answer was ";
-        var partB =  "\nLet's try again, ";
+        var partB = "\nLet's try again, ";
         String correctInput = "Correct!";
 
         System.out.println(nameReq);
@@ -27,14 +26,13 @@ public class Engine {
                 System.out.println(correctInput);
                 counter++;
             } else {
-                System.out.print("'" + userInput + "'"  + partA + "'" + result + "'.");
+                System.out.print("'" + userInput + "'" + partA + "'" + result + "'.");
                 System.out.print(partB + name + "!");
-                gameOver = true;
+                break;
             }
         }
-        if (!gameOver) {
+        if (counter == ROUNDS) {
             System.out.println("Congratulations, " + name + "!");
-            gameOver = true;
         }
     }
 }
