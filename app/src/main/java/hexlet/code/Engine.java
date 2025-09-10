@@ -20,7 +20,7 @@ public class Engine {
         System.out.println(nameReq);
         name = SCANNER.nextLine();
         System.out.println(greet + name + "!\n" + question);
-        while (!gameOver && counter < ROUNDS) {
+        for (String[] data : gameData) {
             System.out.println("Question: " + gameData[counter][0]);
             var userInput = SCANNER.nextLine();
             var result = gameData[counter][1];
