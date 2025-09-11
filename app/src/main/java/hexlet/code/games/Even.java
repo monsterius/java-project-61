@@ -15,11 +15,8 @@ public class Even {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int randomValue = Utils.getRandomNumber(randomNumMin, randomNumMax);
             gameData[i][0] = randomValue + "";
-            if (isEven(randomValue)) {
-                gameData[i][1] = "yes";
-            } else {
-                gameData[i][1] = "no";
-            }
+            var correctAnswer = isEven(randomValue) ? "yes" : "no";
+            gameData[i][1] = correctAnswer;
         }
         // Начало игры
         var question = "Answer 'yes' if the number is even, otherwise answer 'no'.";
