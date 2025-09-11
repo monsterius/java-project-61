@@ -28,8 +28,7 @@ public class Prime {
         final int randomNumMax = 50;
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int randomNumber = Utils.getRandomNumber(randomNumMin, randomNumMax);
-            boolean numIsPrime = isPrime(randomNumber);
-            if (numIsPrime) {
+            if (isPrime(randomNumber)) {
                 gameData[i][0] = "" + randomNumber;
                 gameData[i][1] = "yes";
             } else {
