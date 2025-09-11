@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Gcd {
-    public static int calculateGcd(int num1, int num2) {
+    public static int gcd(int num1, int num2) {
         int temp;
         int result;
         while (num2 != 0) {
@@ -23,7 +23,7 @@ public class Gcd {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int numberA = Utils.getRandomNumber(randomNumMin, randomNumMax);
             int numberB = Utils.getRandomNumber(randomNumMin, randomNumMax);
-            int gCD = calculateGcd(numberA, numberB);
+            int gCD = gcd(numberA, numberB);
             gameData[i][0] = numberA + " " + numberB;
             gameData[i][1] = gCD + "";
         }
